@@ -4,10 +4,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>stateless-cookieStart.jsp</title>
+		<title>Insert title here</title>
 	</head>
 	<body>
-		<h3><a href = "/serverweb/setCookie">쿠키설정하기</a></h3>
-		<h3><a href = "/serverweb/getCookie">쿠키가져오기</a></h3>
+		<h2><a href = "/serverweb/sessionTest?id=myid">세션시작하기</a></h2>
 	</body>
 </html>

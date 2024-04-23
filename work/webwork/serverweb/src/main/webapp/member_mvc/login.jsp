@@ -53,7 +53,7 @@
 																						<td background="/serverweb/images/inputBg.gif"><input
 																							type="text" name="id" size="15" class="grayinput"
 																							tabindex=1 style="width: 156;"
-																							 value=""></td>
+																							 value="<%=id=%>"></td>
 																						<td rowspan=3 style="padding-left: 10" valign=bottom>
 																						<input
 																							type='image' src="/serverweb/images/btn_login.gif"

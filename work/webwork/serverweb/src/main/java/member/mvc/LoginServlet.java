@@ -18,10 +18,13 @@ public class LoginServlet extends HttpServlet {
 		// 1. 요청정보 추출
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
-		
+		String pass = request.getParameter("pass");
 		// 2. 비지니스 메소드 호출
 		MemberDAO dao = new MemberDAOImpl();
 		MemberDTO user = dao.login(id,pass);
+		
+		// 로그인이 성공하고 체크박스에 체크가 된 상태면 로그인한 아이디를 저장
+		
 		System.out.println(user); 
 		
 		// 3. 데이터 공유

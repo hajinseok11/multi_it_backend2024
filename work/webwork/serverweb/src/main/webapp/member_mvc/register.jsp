@@ -14,11 +14,9 @@
 	<div class = "container-fluid">
 		<div class = "row">
 			<div class ="col-lg-2 sidenav">
-				<jsp:include page = "/layout/emp_menu.jsp"/>
+				<jsp:include page = "/layout/servlet_menu.jsp"/>
 			</div>
-			<div class ="col-lg-10">
-			
-			<a href="/serverweb/member/mvc/list" method="GET"><h1>회원목록보기</h1></a>
+	<a href="/serverweb/member/mvc/list" method="GET"><h1>회원목록보기</h1></a>
 			<form role="form" class="form-horizontal"
 				action="/serverweb/member/mvc/insert" method="POST" 
 				name="myform">
@@ -85,10 +83,12 @@
 					</div>
 				</fieldset>
 			</form>
-	</div>
+
 			</div>
 		</div>
 	</div>
+			
+			
 	
 </body>
 </html>

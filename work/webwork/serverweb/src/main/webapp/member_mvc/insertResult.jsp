@@ -21,5 +21,8 @@
 		<%}else{
 			response.sendRedirect("/serverweb/member_mvc/login.jsp");
 		}%>
+			</div>
+		</div>
+	</div>
 	</body>
 </html>

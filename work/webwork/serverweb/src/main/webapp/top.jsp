@@ -40,9 +40,9 @@
       <ul class="nav navbar-nav navbar-right">
       <%-- <%if(loginUser==null){ %> --%>
         <li><a href="/serverweb/member_mvc/register.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/serverweb/member_mvc/login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/serverweb/member/mvc/login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <%-- <%}else{ %> --%>
-        <li><a href="/serverweb/member_mvc/login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="/serverweb/member/mvc/login.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       	<%-- <%}%> --%>
       </ul>
     </div>
