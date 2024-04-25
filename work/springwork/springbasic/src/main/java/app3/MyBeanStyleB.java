@@ -1,4 +1,4 @@
-package app2;
+package app3;
 
 public class MyBeanStyleB implements MyBeanStyle{
 	private String name;
