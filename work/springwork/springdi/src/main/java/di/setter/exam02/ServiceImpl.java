@@ -1,4 +1,4 @@
-package di.constructor.exam02;
+package di.setter.exam02;
 
 public class ServiceImpl implements MyService {
 	String name;
@@ -17,6 +17,25 @@ public class ServiceImpl implements MyService {
 		this.logic = logic;
 	}
 	public ServiceImpl() {}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public Logic getLogic() {
+		return logic;
+	}
+	public void setLogic(Logic logic) {
+		this.logic = logic;
+	}
+	
 
 	
 }

@@ -1,0 +1,23 @@
+[DB연동]
+JDBC -> Spring JDBC -> MyBatis -> JPA
+	   -------------
+		JdbcTemplate
+
+1. SQL Mapper
+	=> JdbcTemplate
+	=> MyBatis
+	=> 개발자가 직접 SQL문을 생성
+	1) JdbcTemplate
+		① JDBC를 사용하기 위해서 반복적으로 정의했던 내용을 대신 처리해준다.
+			- 커넥션 생성
+			- Statement객체 생성
+			- SQL실행
+			- try~catch~finally로 처리
+			- select인 경우 ResultSet에 대한 결과 처리
+			- 자원반납
+			
+		② 개발자가 sql문과 ?에 대한 값만 설정 (나머지는 스프링 내부에서 모두 처리한다.)
+		③ Connection을 관리하는 객체와 JdbcTemplate을 이용해서 작업
+		
+2. ORM(Object Relational Mapping)
+   => JPA

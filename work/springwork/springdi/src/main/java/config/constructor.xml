@@ -20,12 +20,26 @@
 			<ref bean = "dice"/>
 		</constructor-arg>
 	</bean>
-	
 	<bean id = "logic" class = "di.constructor.exam02.LogicImpl"/> 
-	<bean id = "player" class = "di.constructor.exam02.ServiceImpl"/>
-		<constructor-arg> 
-			<ref bean = "dice"/>
-		</constructor-arg>
+	<bean id = "service" class = "di.constructor.exam02.ServiceImpl">
+			<constructor-arg index ="0"> 
+				<value>BTS</value>								<!--</constructor-arg> = 매개변수의 값-->
+			</constructor-arg>
+			<constructor-arg ref ="logic" index="1"/>  			<!-- ref = 값, 기본형 (String 등) -->
+			<constructor-arg value = "멋있다." index="2"/>		<!-- value = 만들어진 bean에 참조  -->
+	
+	<!-- <bean id = "logic" class = "di.constructor.exam02.LogicImpl"/> 
+	<bean id = "service" class = "di.constructor.exam02.ServiceImpl">
+			<constructor-arg type ="String">
+				<value>BTS</value>
+			</constructor-arg>
+			<constructor-arg ref ="logic" type="di.constructor.exam02.Logic"/>
+			<constructor-arg value = "멋있다." type="String"/> -->
+	</bean>
+
+	<bean id = "dao2" class ="di.constructor.exam03.OracleArticleDAO"/>
+	<bean id = "mgr" class = "di.constructor.exam03.WriteArticleMgr">
+		<constructor-arg ref = "dao2"/>
 	</bean>
 	
 	

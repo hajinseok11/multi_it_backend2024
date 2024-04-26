@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id = "dao" class = "basic.setter.MemberDAO"/>
+	<bean id = "insa" class = "basic.setter.InsaImpl">
+		<!-- property엘리먼트의 name속성은 setter메소드의 set을 빼고 첫 글자를 소문자로 변경한 이름(멤버변수)  -->
+		<property name = "dao" ref ="dao"/>
+	</bean>
+	
+	<bean id = "dice" class = "di.setter.exam01.Dice"/> 
+	<bean id = "player" class = "di.setter.exam01.Player">
+		<property name = "d" ref ="dice"/>
+	</bean>
+	
+	<bean id = "logic" class = "di.setter.exam02.LogicImpl"/> 
+	<bean id = "service" class = di.setter.exam02.ServiceImpl">
+		<property name = "name" value ="BTS"/>
+		<property name = "msg" value ="안녕"/>
+		<property name = "logic" ref ="logic"/>
+	</bean>
+	
+	
+	<bean id = "article" class = "di.setter.exam03.ArticleDTO">
+		<property name = "name" value ="BTS"/>
+		<property name = "title" value ="아이돌"/>
+		<property name = "content" value ="음악"/>
+		<property name = "date" value ="2024-04-26"/>
+	</bean>
+
+
+</beans>

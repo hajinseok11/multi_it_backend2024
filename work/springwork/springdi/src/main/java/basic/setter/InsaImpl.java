@@ -1,4 +1,4 @@
-package basic;
+package basic.setter;
 public class InsaImpl implements Insa {
 	MemberDAO dao;
 	String msg;
@@ -28,9 +28,11 @@ public class InsaImpl implements Insa {
 		return null;
 	}
 	public MemberDAO getDao() {
+		System.out.println("getDao()");
 		return dao;
 	}
 	public void setDao(MemberDAO dao) {
+		System.out.println("setDao()");
 		this.dao = dao;
 	}
 
