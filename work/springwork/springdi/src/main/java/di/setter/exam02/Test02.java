@@ -6,8 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Test02 {
 	public static void main(String[] args) {
 		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/setter.xml");
-		
-		MyService bean = factory.getBean("service",Myservice.class);
+		MyService bean = factory.getBean("service", MyService.class);
 		bean.testService();
 		
 	}

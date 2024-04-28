@@ -2,7 +2,7 @@ package di.annotation.exam03;
 
 import org.springframework.stereotype.Repository;
 
-@Repository("oracleinsert")
+@Repository("oracle")
 public class OracleArticleDAO implements IArticleDAO {
 	@Override
 	public void insert(ArticleDTO article) {

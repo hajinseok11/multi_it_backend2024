@@ -7,19 +7,17 @@ import org.springframework.stereotype.Service;
 @Service("mgr")
 public class WriteArticleMgr implements IWriteArticleMgr {
 	@Autowired
-	@Qualifier("mysql")
+	@Qualifier("oracle")
 	private IArticleDAO articleDAO;
 	
+	public WriteArticleMgr() {
+			
+	}
 	public WriteArticleMgr(IArticleDAO articleDAO) {
 		super();
 		this.articleDAO = articleDAO;
-	}
-	public void WriteArticleMgr(IArticleDAO articleDAO) {
-		
-	}
-	public void WriteArticleMgr() {
-		
-	}
+	}	
+	
 	@Override
 	public void write(ArticleDTO article) {
 		articleDAO.insert(article);

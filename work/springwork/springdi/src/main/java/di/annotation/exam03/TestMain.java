@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestMain {
 	public static void main(String[] args) {
-		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/anno.xml");
+		ApplicationContext factory  = new ClassPathXmlApplicationContext("/config/anno.xml");
 		IWriteArticleMgr mgr = factory.getBean("mgr",IWriteArticleMgr.class);
 		ArticleDTO dto = new ArticleDTO();
 		

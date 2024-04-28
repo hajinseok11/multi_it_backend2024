@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class InsaImpl implements Insa {
-	
 	@Autowired
 	@Qualifier("customer")
 	DAO dao;

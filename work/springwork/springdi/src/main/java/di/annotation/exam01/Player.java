@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 @Service("player")
 public class Player implements AbstractPlayer {
 	@Autowired
-	@Qualifier("dice1")
-	Dice d;
+	@Qualifier("dice2")
+	AbstractDice d;
 	int totalValue=0;	// totalValue변수는 주사위를 굴리고 얻은 결과가 저장되므로 컨테이너가 생성해주지 않아도 된다.
 	public Player() {
 		
 	}
-	public Player(Dice d) {
+	public Player(AbstractDice d) {
 		super();
 		this.d = d;
 	}
