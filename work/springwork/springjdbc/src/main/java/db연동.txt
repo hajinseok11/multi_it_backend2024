@@ -19,5 +19,50 @@ JDBC -> Spring JDBC -> MyBatis -> JPA
 		② 개발자가 sql문과 ?에 대한 값만 설정 (나머지는 스프링 내부에서 모두 처리한다.)
 		③ Connection을 관리하는 객체와 JdbcTemplate을 이용해서 작업
 		
+2. JdbcTemplate
+	1) JdbcTemplate을 사용하기 위한 작업순서
+		① 라이브러리를 pom.xml에 등록
+		  => Spring Jdbc, 오라클 드라이버
+		② 커넥션을 관리하는 객체 생성
+		  => 커넥션 풀을 사용할 것이나 DriverManager 방식으로 커넥션 객체를 관리하는 방식을 사용
+		  						------------------
+		  						요청이 들어오면 커넥션 객체를 하나 씩 만들어서 리턴
+		  => DriverManagerDataSource
+		  => spring기능을 사용하기 위해서 필요한 객체로 객체를 생성하고 관리하는 작업을 IoC컨테이너가 작업
+		  => IoC컨테이너가 커넥션을 관리하는 기능을 갖고 있는 DriverManagerDataSource객체를 생성할 수 있도록
+		  	 설정정보를 xml에 정의
+		  	 ------
+		  	 	드라이버, url, 계정, 계정 패스워드
+		  	 	
+		③ SQL을 생성할 수 있는 객체 생성
+		  => JdbcTemplate
+		  => IoC컨테이너에서 생성
+		  => JdbcTemplate내부에서 SQL문을 처리하기 위해 커넥션 객체가 필요
+		  => DriverManagerDataSource객체로부터 얻는다. (DBUtil에서 getConnect메소드를 호출해서 커넥션을 얻는 작업)
+		  	 ------------------------------------
+		  	 	관계를 IoC컨테이너가 매핑
+	[실습]
+	scott/tiger 계정으로 접속해서 member 테이블의 레코드 수를 조회하는 작업을 해보세요
+		- member.xml로 작업
+		- MemberDAO 작업
+		- MemberDAOTest 작업
+		
+		조회된 레코드 수: ___ 개
+		
+	2) JdbcTemplate 메소드
+	   ① update - insert, delete, update를 처리하기 위한 jdbcTemplate의 메소드
+		
+		
+		  	 	
+		  	 	
+		  	 	
+		  	 	
+		  	 	
+		  	 	
+		  	 	
 2. ORM(Object Relational Mapping)
    => JPA
+   
+   
+   
+   

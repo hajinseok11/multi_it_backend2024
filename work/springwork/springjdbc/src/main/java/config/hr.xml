@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	<context:component-scan base-package="first"/>
+	<!-- 커넥션을 DriverManager방식으로 관리하는 객체 생성 (IoC컨테이너가 빈을 만들 수 있도록 명세를 정의) -->
+	<bean id = "ds" class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name = "driverClassName" value = "oracle.jdbc.driver.OracleDriver"/>
+		<property name = "url" value="jdbc:oracle:thin:@110.35.174.39:1521:xe"/>
+		<property name = "username" value="hr"/>
+		<property name = "password" value = "hr"/>
+	</bean>
+	<!-- SQL문 실행할 수 있도록 기능을 제공하는 클래스  -->
+	<bean id = "template" class = "org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref = "ds"/>
+	</bean>
+</beans>
