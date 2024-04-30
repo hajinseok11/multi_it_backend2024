@@ -1,8 +1,11 @@
 package dept;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import member.MemberDTO;
 @Service("menu")
 public class MenuUI implements AbstractUI {
 	DeptDAO dao;
@@ -35,8 +38,17 @@ public class MenuUI implements AbstractUI {
 			case 1:
 				insertMenu();
 				break;
+			case 2:
+				showDeptInfo();
+				break;
 			case 3:
 				updateMenu();
+				break;
+			case 5:
+				showAllMenu();
+				break;
+			case 6:
+				findByDept();
 				break;
 			case 7:
 				countMenu();
@@ -71,14 +83,14 @@ public class MenuUI implements AbstractUI {
 	@Override
 	public void updateMenu() {
 		System.out.println("*******부서수정********");
+		System.out.print("부서코드:");
+		String deptcode = key.next();
+		System.out.print("부서명:");
+		String deptname = key.next();
 		System.out.print("전화번호:");
 		String tel = key.next();
-		System.out.print("주소:");
-		String addr = key.next();
-		System.out.print("수정할 부서코드:");
-		String deptcode = key.next();
 
-		DeptDTO updateUser = new DeptDTO(deptcode,tel,addr);
+		DeptDTO updateUser = new DeptDTO(deptcode,deptname,tel);
 		int result = dao.update(updateUser);
 		System.out.println(result+"개 수정완료");
 		
@@ -90,23 +102,44 @@ public class MenuUI implements AbstractUI {
 	}
 	@Override
 	public void showAllMenu() {
-		// TODO Auto-generated method stub
-		
+		//전체부서 목록조회
+		List<DeptDTO> deptlist = dao.getDeptList();
+		for(DeptDTO dept : deptlist) {
+			print(dept);
+		}
 	}
 	@Override
 	public void showDeptInfo() {
-		// TODO Auto-generated method stub
-		
+		System.out.print("부서코드:");
+		String deptcode = key.next();
+		DeptDTO dept = dao.getDeptInfo(deptcode);
+		if(dept==null) {
+			System.out.println("부서코드 다시 입력");
+		}else {
+			print(dept);
+		}
 	}
 	@Override
 	public void findByDept() {
-		// TODO Auto-generated method stub
+		System.out.print("부서명:");
+		String deptname = key.next();
+		List<DeptDTO> deptlist = dao.getDeptSearch(deptname);
+		for(DeptDTO dept:deptlist) {
+			print(dept);
+		}
 		
 	}
 	@Override
 	public void getMemberList() {
 		// TODO Auto-generated method stub
 		
+	}
+	public void print(DeptDTO dept) {
+		System.out.print(dept.getDeptCode()+"\t");
+		System.out.print(dept.getDeptName()+"\t");
+		System.out.print(dept.getTel()+"\t");
+		System.out.print(dept.getAddr()+"\t");
+
 	}
 	
 }

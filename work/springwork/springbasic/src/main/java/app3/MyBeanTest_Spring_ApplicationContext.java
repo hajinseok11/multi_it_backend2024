@@ -14,7 +14,7 @@ public class MyBeanTest_Spring_ApplicationContext {
 		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/bean.xml");
 		System.out.println("++++++++++ ApplicationContext 객체생성후 ++++++++++");
 		// MyBeanStyle타입의 obj가 스프링 컨테이너가 관리하는 빈
-		MyBeanStyle obj = (MyBeanStyle) factory.getBean("mybean");
+		MyBeanStyle obj = (MyBeanStyle)factory.getBean("mybean");
 		System.out.println("++++++++++ getBean 호출 후 ++++++++++");
 		
 		run(obj);

@@ -5,7 +5,7 @@ package app2;
 // => 그러나 .... 객체를 사용하기 위해서 생성하는 코드는 객체가 바뀌면 변경해야한다.
 public class MyBeanTest {
 	public static void main(String[] args) {
-		MyBeanStyleB obj = new MyBeanStyleB();
+		MyBeanStyleA obj = new MyBeanStyleA();
 		run(obj);
 		show(obj);
 		change(obj);

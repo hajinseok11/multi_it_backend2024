@@ -11,11 +11,11 @@ public class TestApp {
 	public static void main(String[] args) {
 		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/anno.xml");
 		
-		MessageBean bean = factory.getBean("messageBean",MessageBean.class);
-		System.out.println(bean.getName());
+		InterMessage bean = factory.getBean("messageBean",MessageBean.class);
+		bean.sayHello();
 		
-		FileOutputter fileoutputter = factory.getBean("fileoutputter",FileOutputter.class);
-		System.out.println(fileoutputter.getFilePath());
+		Outputter fileoutputter = factory.getBean("fileoutputter",FileOutputter.class);
+		fileoutputter.output("성공");
 	}
 
 }

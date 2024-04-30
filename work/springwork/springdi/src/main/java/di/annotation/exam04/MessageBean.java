@@ -1,16 +1,18 @@
 package di.annotation.exam04;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component("messageBean")
+@Service("messageBean")
 public class MessageBean implements InterMessage {
 	@Value("정국")
 	private String name;
 	@Value("안녕하세요")
 	private String greeting;
 	@Autowired
+	@Qualifier("fileoutput")
 	private Outputter outputter;
 	public MessageBean() {
 	}
@@ -44,7 +46,7 @@ public class MessageBean implements InterMessage {
 	}
 	@Override
 	public void sayHello() {
-		System.out.println("Hello");
+		outputter.output(greeting+","+name+"님");
 	}
 	
 	

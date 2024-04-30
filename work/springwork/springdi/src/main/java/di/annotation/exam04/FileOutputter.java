@@ -1,9 +1,9 @@
 package di.annotation.exam04;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component("fileoutputter")
+@Service("fileoutputter")
 public class FileOutputter implements Outputter {
 	@Value("파일경로")
 	private String filePath;
@@ -17,7 +17,7 @@ public class FileOutputter implements Outputter {
 	
 	@Override
 	public void output(String message) {
-		System.out.println("output");
+		System.out.println("output: "+ message);
 	}
 	
 	public String getFilePath() {

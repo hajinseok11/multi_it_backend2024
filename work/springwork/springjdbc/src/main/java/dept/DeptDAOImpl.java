@@ -1,6 +1,9 @@
 package dept;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +32,27 @@ public class DeptDAOImpl implements DeptDAO {
 	@Override
 	public int count() {
 		return template.queryForObject("select count(*) from mydept", Integer.class);
+	}
+
+	@Override
+	public DeptDTO getDeptInfo(String deptno) {
+		DeptDTO user = null;
+		try {
+			user = template.queryForObject("select * from mydept where deptcode=?",
+					new Object[]{deptno},new DeptRowMapper());
+		}catch (EmptyResultDataAccessException e) {
+	}return user;
+}
+
+	@Override
+	public List<DeptDTO> getDeptList() {
+		return template.query("select* from mydept", new DeptRowMapper());
+	}
+
+	@Override
+	public List<DeptDTO> getDeptSearch(String deptname) {
+		return template.query("select* from mydept where deptname like ?", 
+				new Object[] {"%"+deptname+"%"}, new DeptRowMapper());
 	}
 
 }

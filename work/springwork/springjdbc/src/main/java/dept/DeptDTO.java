@@ -8,6 +8,12 @@ public class DeptDTO {
 	public DeptDTO(){
 		
 	}
+	
+	public DeptDTO(String deptCode) {
+		super();
+		this.deptCode = deptCode;
+	}
+
 	public DeptDTO(String deptCode, String deptName, String tel, String addr) {
 		super();
 		this.deptCode = deptCode;

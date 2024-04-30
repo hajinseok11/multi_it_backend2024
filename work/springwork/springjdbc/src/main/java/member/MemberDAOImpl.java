@@ -3,6 +3,7 @@ package member;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 @Repository("memberDAO")
@@ -43,26 +44,37 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberDTO login(String id, String pass) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberDTO login(String id, String pass) {		
+		MemberDTO user = null;
+		try {
+			user = template.queryForObject("select * from member where id =? and pass = ?",
+				new Object[] {id,pass}, new MemberRowMapper());
+		}catch (EmptyResultDataAccessException e) {
+			
+		}
+		return user;
 	}
 
 	@Override
 	public List<MemberDTO> select() {
-		// TODO Auto-generated method stub
-		return null;
+		return template.query("select * from member", new MemberRowMapper());
 	}
 
 	@Override
 	public MemberDTO findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberDTO user = null;
+		try {
+			user = template.queryForObject("select * from member where id = ?", 
+				new Object[] {id}, new MemberRowMapper());
+		}catch (EmptyResultDataAccessException e) {
+			
+		}
+		return user;
 	}
 
 	@Override
 	public List<MemberDTO> findByAddr(String addr) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.query("select * from member where addr like ?", 
+				new Object[]{"%"+addr+"%"}, new MemberRowMapper());
 	}
 }
