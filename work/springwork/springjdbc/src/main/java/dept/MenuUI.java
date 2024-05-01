@@ -44,6 +44,9 @@ public class MenuUI implements AbstractUI {
 			case 3:
 				updateMenu();
 				break;
+			case 4:
+				deleteMenu();
+				break;
 			case 5:
 				showAllMenu();
 				break;
@@ -97,7 +100,15 @@ public class MenuUI implements AbstractUI {
 	}
 	@Override
 	public void deleteMenu() {
-		// TODO Auto-generated method stub
+		System.out.println("*******부서삭제********");
+		System.out.print("부서코드:");
+		String deptcode = key.next();
+		
+		DeptDTO dept = new DeptDTO(deptcode);
+		int result = dao.update(dept);
+		System.out.println(result+"개 삭제완료");
+		
+		
 		
 	}
 	@Override
@@ -138,7 +149,7 @@ public class MenuUI implements AbstractUI {
 		System.out.print(dept.getDeptCode()+"\t");
 		System.out.print(dept.getDeptName()+"\t");
 		System.out.print(dept.getTel()+"\t");
-		System.out.print(dept.getAddr()+"\t");
+		System.out.println(dept.getAddr()+"\t");
 
 	}
 	

@@ -25,8 +25,8 @@ public class DeptDAOImpl implements DeptDAO {
 
 	@Override
 	public int update(DeptDTO dept) {
-		String sql = "update mydept set tel=?, addr=? where deptcode =?";
-		return template.update(sql,dept.getTel(),dept.getAddr(),dept.getDeptCode());
+		String sql = "update mydept set tel=?, deptname=? where deptcode =?";
+		return template.update(sql,dept.getTel(),dept.getDeptName(),dept.getDeptCode());
 	}
 
 	@Override
@@ -34,6 +34,7 @@ public class DeptDAOImpl implements DeptDAO {
 		return template.queryForObject("select count(*) from mydept", Integer.class);
 	}
 
+	
 	@Override
 	public DeptDTO getDeptInfo(String deptno) {
 		DeptDTO user = null;
@@ -54,5 +55,7 @@ public class DeptDAOImpl implements DeptDAO {
 		return template.query("select* from mydept where deptname like ?", 
 				new Object[] {"%"+deptname+"%"}, new DeptRowMapper());
 	}
+
+	
 
 }

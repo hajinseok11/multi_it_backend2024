@@ -22,11 +22,11 @@ public class DeptDTO {
 		this.addr = addr;
 	}
 	
-	public DeptDTO(String deptCode, String tel, String addr) {
+	public DeptDTO(String deptCode, String deptName, String tel) {
 		super();
 		this.deptCode = deptCode;
+		this.deptName = deptName;
 		this.tel = tel;
-		this.addr = addr;
 	}
 	public DeptDTO(String tel2, String addr2) {
 
