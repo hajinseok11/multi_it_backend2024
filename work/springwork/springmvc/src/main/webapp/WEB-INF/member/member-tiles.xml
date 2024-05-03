@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<!-- 실행할 뷰의 정보를 각각의 화면에 대한 정보를 모두 등록  
+		=> 사용할 템플릿에서 영역에 연결할 파일만 등록
+	-->
+	<definition name = "tiles/insert" template = "mainTemplate">
+		<put-attribute name="menu" value = "/WEB-INF/menu/emp_menu.jsp"/>
+		<put-attribute name="content" value = "/WEB-INF/member/register.jsp"/>
+	</definition>
+	
+	<definition name = "tiles/login" template = "mainTemplate">
+		<put-attribute name="menu" value = "/WEB-INF/menu/emp_menu.jsp"/>
+		<put-attribute name="content" value = "/WEB-INF/member/register.jsp"/>
+	</definition>
+
+	
+
+</tiles-definitions>

@@ -12,9 +12,9 @@
 <body>
 	<div class="container-fluid">
 			<div class="col-lg-10">
-				<a href="/serverweb/member/mvc/list"><h1>회원목록보기</h1></a>
+				<a href="/springmvc/dept/list"><h1>부서목록보기</h1></a>
 				<form role="form" class="form-horizontal"
-					action="/serverweb/member/mvc/insert" method="POST" 
+					action="/springmvc/dept/insert" method="POST" 
 					name="myform">
 					<fieldset>
 						<div id="legend">
@@ -22,55 +22,45 @@
 						</div>
 						<div class="form-group">
 							<!-- 부서코드 -->
-							<label class="control-label col-sm-2" for="orgcode">아이디</label>
+							<label class="control-label col-sm-2" for="orgcode">부서코드</label>
 							<div class="col-sm-3">
-								<input type="text" id="id" name="id"
-									placeholder="아이디" class="form-control"
+								<input type="text" id="deptCode" name="deptCode"
+									placeholder="부서코드" class="form-control"
 									 required>
 							</div>
 						</div>
 						<div class="form-group">
 							<!-- 패스워드-->
-							<label class="control-label col-sm-2" for="pass">패스워드</label>
+							<label class="control-label col-sm-2" for="pass">부서명</label>
 							<div class="col-sm-3">
-								<input type="text" id="pass" name="pass"
-									placeholder="패스워드" class="form-control" minlength="4" >
+								<input type="text" id="deptName" name="deptName"
+									placeholder="부서명" class="form-control" minlength="4" >
 	
 							</div>
 						</div>
 						
 						
 						<div class="form-group">
-							<!-- 성명-->
-							<label class="control-label col-sm-2" for="orgname">성명</label>
+							<!-- 패스워드-->
+							<label class="control-label col-sm-2" for="orgname">부서전화번호</label>
 							<div class="col-sm-3">
-								<input type="text" id="orgname" name="name"
-									placeholder="성명" class="form-control" minlength="3" required>
+								<input type="text" id="tel" name="tel"
+									placeholder="부서명" class="form-control" minlength="4" >
 	
 							</div>
 						</div>
-					
+						
 						<div class="form-group">
 							<!-- 주소-->
-							<label class="control-label col-sm-2" for="addr">주소</label>
+							<label class="control-label col-sm-2" for="addr">부서주소</label>
 							<div class="col-sm-3">
 								<input type="text" id="addr" name="addr" 
-								placeholder="주소"
+								placeholder="부서주소"
 									class="form-control" minlength="4" required>
 	
 							</div>
 						</div>
-						<div class="form-group">
-							<!-- 기타사항-->
-							<label class="control-label col-sm-2" for="info">기타사항</label>
-							<div class="col-sm-3">
-								<input type="text" id="info" name="info" 
-								placeholder="기타사항"
-									class="form-control" minlength="4" required>
-	
-							</div>
-						</div>
-						
+						<hr/>
 						<div class="form-group">
 							<!-- Button -->
 							<div class="col-sm-3 col-sm-offset-2">

@@ -41,9 +41,9 @@
 																						<td height=25></td>
 																					</tr>
 																					<tr>
-																						<td background="/serverweb/images/inputBg.gif"><img
-																							src="/serverweb/images/login_id.gif"></td>
-																						<td background="/serverweb/images/inputBg.gif"><input
+																						<td background="/springmvc/images/inputBg.gif"><img
+																							src="/springmvc/images/login_id.gif"></td>
+																						<td background="/springmvc/images/inputBg.gif"><input
 																							type="text" name="id" size="15" class="grayinput"
 																							tabindex=1 style="width: 156;"
 																							 value=""></td>
@@ -56,8 +56,8 @@
 																						<td height=10></td>
 																					</tr>
 																					<tr>
-																						<td background="/serverweb/images/inputBg.gif"><img
-																							src="/serverweb/images/login_pass.gif"></td>
+																						<td background="/springmvc/images/inputBg.gif"><img
+																							src="/springmvc/images/login_pass.gif"></td>
 																						<td background="/serverweb/images/inputBg.gif"><input
 																							type="password" name="pass" size="15"
 																							class="grayinput" tabindex='2' style='width: 156;'>
