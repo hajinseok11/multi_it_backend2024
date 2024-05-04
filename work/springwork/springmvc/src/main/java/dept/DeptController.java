@@ -19,7 +19,7 @@ public class DeptController {
 	public String showpage() {
 		return "dept/dept";
 	}
-	@RequestMapping(value = "insert", method = RequestMethod.POST)
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public ModelAndView insert(DeptDTO dept) {
 		System.out.println(dept);
 		int result = service.insert(dept);

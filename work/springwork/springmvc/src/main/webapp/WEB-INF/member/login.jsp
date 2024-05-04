@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "tiles" uri = "http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<tiles:insertAttribute name= "top"/>
 			<div class="col-lg-10">
 				<form name="login_frm" action="/serverweb/member/mvc/login" method="post">
 					<table cellpadding="0" cellspacing=5 width="815" bgcolor=#f3f3f3
