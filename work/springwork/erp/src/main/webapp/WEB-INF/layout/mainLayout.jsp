@@ -52,9 +52,9 @@
       				 </div>
 			 	</div>
 			 	<div class="col-sm-8" style="background-color: white;height: 800px;">
-
+<tiles:insertAttribute name = "content"></tiles:insertAttribute>
 			 		<!-- 이곳에 content화면을 연결하세요" -->		 	</div>
-			 		 <tiles:insertAttribute name = "content"></tiles:insertAttribute>
+			 		 
 			</div>
 	</div>
 	

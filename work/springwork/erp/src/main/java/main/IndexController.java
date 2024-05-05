@@ -17,4 +17,5 @@ public class IndexController {
 	public String community() {
 		return "menu/board";
 	}
+	
 }

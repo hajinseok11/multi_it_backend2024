@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="/erp/common/css/main.css" />
+<link rel="stylesheet" href="../static/common/css/main.css" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -39,18 +39,18 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="/erp/images/playdata1.jpg" alt="Image"
+							<img src="/static/images/playdata1.jpg" alt="Image"
 								style="width: 600px; height: 300px">
 
 						</div>
 
 						<div class="item">
-							<img src="/erp/images/playdata2.jpg" alt="Image"
+							<img src="/static/images/playdata2.jpg" alt="Image"
 								style="width: 800px; height: 300px">
 
 						</div>
 						<div class="item">
-							<img src="/erp/images/playdata3.jpg" alt="Image"
+							<img src="/static/images/playdata3.jpg" alt="Image"
 								style="width: 600px; height: 300px">
 
 						</div>

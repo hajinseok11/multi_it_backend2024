@@ -8,7 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <tiles:insertAttribute name= "top"/>
+<tiles:insertAttribute name= "menu"/>
+<tiles:insertAttribute name= "content"/>
 			<div class="col-lg-10">
 				<form name="login_frm" action="/serverweb/member/mvc/login" method="post">
 					<table cellpadding="0" cellspacing=5 width="815" bgcolor=#f3f3f3
