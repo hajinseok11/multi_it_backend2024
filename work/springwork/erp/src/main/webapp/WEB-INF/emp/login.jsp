@@ -35,13 +35,13 @@
 
 																		<tr>
 																			<td colspan=3><img
-																				src="/erp/static/images/page_login.gif"></td>
+																				src="/erp/images/page_login.gif"></td>
 																		</tr>
 																		<tr>
 																			<td height=25></td>
 																		</tr>
 																		<tr>
-																			<td background="/erp/static/images/inputBg.gif"><img
+																			<td background="/erp/images/inputBg.gif"><img
 																				src="/erp/images/login_id.gif"></td>
 																			<td background="/erp/images/inputBg.gif"><input
 																				type="text" name="id" size="15" class="grayinput"
@@ -49,7 +49,7 @@
 																				 value=""></td>
 																			<td rowspan=3 style="padding-left: 10" valign=bottom>
 																			<input
-																				type='image' src="/erp/static/images/btn_login.gif"
+																				type='image' src="/erp/images/btn_login.gif"
 																				border="0" tabindex=3></td>
 																		</tr>
 																		<tr>

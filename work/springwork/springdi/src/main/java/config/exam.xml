@@ -1,0 +1,12 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id = "outputter" class = "di.annotation.exam04.FileOutputter"/>
+	<bean id ="bean" class = "exam04.MessageBean">
+		<constructor-arg name ="name" value = "BTS"/>
+		<property name = "greeting" value = "안녕"/>
+		<property name = "outputter" ref = "outputter"/>
+	</bean>
+
+</beans> -->

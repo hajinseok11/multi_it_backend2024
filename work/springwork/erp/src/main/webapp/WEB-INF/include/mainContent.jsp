@@ -50,7 +50,7 @@
 
 						</div>
 						<div class="item">
-							<img src="/static/images/playdata3.jpg" alt="Image"
+							<img src="/erp/images/playdata3.jpg" alt="Image"
 								style="width: 600px; height: 300px">
 
 						</div>
