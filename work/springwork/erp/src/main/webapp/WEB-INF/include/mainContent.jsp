@@ -39,18 +39,18 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="/static/images/playdata1.jpg" alt="Image"
+							<img src="/static/images/mulit1.jpg" alt="Image"
 								style="width: 600px; height: 300px">
 
 						</div>
 
 						<div class="item">
-							<img src="/static/images/playdata2.jpg" alt="Image"
+							<img src="/static/images/multi2.jpg" alt="Image"
 								style="width: 800px; height: 300px">
 
 						</div>
 						<div class="item">
-							<img src="/erp/images/playdata3.jpg" alt="Image"
+							<img src="/erp/images/multi3.jpg" alt="Image"
 								style="width: 600px; height: 300px">
 
 						</div>

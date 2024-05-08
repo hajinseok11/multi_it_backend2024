@@ -38,7 +38,7 @@
 	<div style="background-color: #edeef1;padding: 20px;height: 800px">
 		
 			<div class="row" style="margin-left: auto;margin-right: auto;">
-			 	<div class="col-sm-3" 
+			 	<div class="col-sm-2" 
 			 	style="background-color: white;margin-right:10px;padding: 0px ">
 			 		 <div
 			 		 style="border-color:white;height: 800px;">
@@ -51,10 +51,9 @@
 				       
       				 </div>
 			 	</div>
-			 	<div class="col-sm-8" style="background-color: white;height: 800px;">
+			 	<div class="col-sm-9" style="background-color: white;height: 800px;">
 <tiles:insertAttribute name = "content"></tiles:insertAttribute>
 			 		<!-- 이곳에 content화면을 연결하세요" -->		 	</div>
-			 		 
 			</div>
 	</div>
 	

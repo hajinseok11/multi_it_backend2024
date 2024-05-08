@@ -17,12 +17,10 @@
 	<!--/resources/로 요청하면 실제 /resources/위치에서 찾아서 실행하겠다는 의미
 	mapping은 요청 path, location은 실제 파일이 저장된 위치  -->
 	<!--이미지파일,css,js등 리소스 경로  -->
-	<!--<resources mapping="/images/**" location="/WEB-INF/static/images/" />  -->
-	<resources mapping="/images/**" location="/resources/images/" />
-	<resources mapping="/common/css/**" location="/resources/common/css/" />
-	<resources mapping="/common/js/**" location="/resources/common/js/" />
+	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/images/**" location="/WEB-INF/static/images/" />
-	<resources mapping="/common/**" location="/WEB-INF/static/common/" />
+	<resources mapping="/common/css/**" location="/WEB-INF/static/common/css/" />
+	<resources mapping="/common/js/**" location="/WEB-INF/static/common/js/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -32,24 +30,36 @@
 	</beans:bean>
 	
 	<!-- annotation을 사용하기 위해서 스프링 IoC컨테이너가 스캔할 패키지 등록 -->
-	<context:component-scan base-package="com.multi.springmvc"/>
 	<context:component-scan base-package="com.multi.erp"/>
 	<context:component-scan base-package = "main"/>
-	<context:component-scan base-package = "com"/>
+	<context:component-scan base-package = "test"/>
 
 	<!--=====================================스프링 JDBC연동을 위해서 필요한 라이브러리===================================  -->
 	<!--jdbc에서 DriverManager방식으로 커넥션을 생성해서 관리(요청이 들어오면 커넥션을 만들어서 넘겨주는 방식)  -->
-	<beans:bean id = "ds" class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- <beans:bean id = "ds" class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name ="driverClassName" value = "oracle.jdbc.driver.OracleDriver"/> 
 		<beans:property name ="url" value = "jdbc:oracle:thin:@127.0.0.1:1521:xe"/> 
-		<beans:property name ="username" value = "scott"/> 
-		<beans:property name ="password" value = "tiger"/> 
-	</beans:bean>
+		<beans:property name ="username" value = "erp"/> 
+		<beans:property name ="password" value = "erp"/> 
+	</beans:bean> -->
 	
 	<!-- sql을 실행할 수 있는 기능을 제공하는 클래스  -->
 	<beans:bean id = "template" class = "org.springframework.jdbc.core.JdbcTemplate">
 		<beans:constructor-arg ref ="ds"/>
 	</beans:bean>
+	
+	<!--===============================			커넥션 풀 등록			==============================  -->
+	<beans:bean id = "hikariConfig" class = "com.zaxxer.hikari.HikariConfig">
+		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<beans:property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<beans:property name="username" value="erp"/>
+		<beans:property name="password" value="erp"/>
+		<beans:property name="maximumPoolSize" value = "15"/>
+	</beans:bean>
+	<beans:bean id = "ds" class = "com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<beans:constructor-arg ref = "hikariConfig"/>
+	</beans:bean>
+	
 	
 	<!--=====================================tiles 기반으로 뷰 정보를 만들 수 있도록 ViewResolver등록 ===================================  -->
 	<!--1. tiles 설정 파일을 스프링 내부에서 인식할 수 있도록 등록 -->

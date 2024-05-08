@@ -16,6 +16,6 @@
 	</definition>
 	<!-- 뷰 -->
 	<definition name = "index" extends = "indexTemplate"></definition>
-	<definition name = "login" extends = "mainTemplate"></definition>	
+	<definition name = "login" extends = "mainTemplate"></definition>
 	
 </tiles-definitions>
