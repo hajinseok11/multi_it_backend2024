@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +17,6 @@
 </script>
 </head>
 <body>
-	<%
-	%>
 	
 	<div style="padding-top: 30px">
 		<div class="col-md-3" style="padding-bottom: 10px">
@@ -43,7 +41,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+				<c:forEach var = "board" items = "${boardlist}">
+					<tr>
+						<td>${board.board_no}</td>
+						<td><a href = "#">${board.title}</a></td>
+						<td>${board.id}</td>
+						<td>${board.write_date}</td>
+						<td><a href = "#">삭제</a></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -55,7 +61,7 @@
 			<option value="write_date">작성일</option>
 		</select> <input type="text" name="search" /> <input type="submit" value="검색">
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="" style="text-align: right;">글쓰기</a></li>
+			<li><a href="/erp/board/write" style="text-align: right;">글쓰기</a></li>
 		</ul>
 	</form>
 

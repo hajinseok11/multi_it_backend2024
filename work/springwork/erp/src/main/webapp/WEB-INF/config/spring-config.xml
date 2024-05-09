@@ -75,6 +75,17 @@
 		<beans:property name ="viewClass" value = "org.springframework.web.servlet.view.tiles3.TilesView"/>
 		<beans:property name="order" value = "1"/>
 	</beans:bean>
+	
+	<!--===============================MyBatis 사용을 위해서 필요한 라이브러리==============================  -->
+	<beans:bean id ="sessionFactory" class = "org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name = "dataSource" ref = "ds"/>
+		<beans:property name = "configLocation" value="/WEB-INF/config/mybatis-config.xml"/>
+	</beans:bean>
+	<!-- MyBatis의 핵심클래스(sql을 실행하기 위한 기능을 제공) -->
+	<beans:bean id = "sqlSession" class = "org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg ref = "sessionFactory"/>
+	</beans:bean>
+	
 </beans:beans>
 
 

@@ -1,0 +1,46 @@
+[MyBatis 설정]
+	=> JdbcTemplate처럼 자동화 해주는 부분이 많아서 편리
+	=> SQL은 xml파일로 분리
+	=> 개발자가 SQL을 작성하면 SQL의 실행결과나 파라미터를 편리하게 객체로 매핑해주는 작업을 처리
+	=> 동적 쿼리를 위한 기능을 제공(<if>,<where>,<foreach>...)
+	1. pom.xml에 라이브러리를 추가
+		- MyBatis 라이브러리
+		- spring과 MyBatis를 연동하기 위한 라이브러리(spring에서 MyBatis를 사용하기 위한 )
+	
+	2. MyBatis설정파일
+	   - MyBatis의 설정 정보를 담고 있는 기본 설정 파일(메인설정파일-xml)
+	   							   ----------
+	   							   <!DOCTYPE configuration
+									  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+									  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+	   - mapper파일의 위치
+									  
+	3. Spring에서 MyBatis를 사용하기 위해서 설정파일에 추가
+		1) SqlSessionFactory
+			- SqlSessionFactoryBean을 등록
+			- Spring과 MyBatis를 연결해주는 클래스(호환 가능)
+			- MyBatis와 오라클의 연결을 관리
+		2) SqlSession
+			- SqlSessionTemplate을 등록
+			- MyBatis에서 SQL문을 실행할 수 있도록 기능을 지원하는 핵심 클래스
+			- JdbcTemplate과 동일한 클래스
+			- 내부에서 SqlSessionFactory가 갖고 있는 DataSource를 이용해서 sql을 실행
+						
+	4. XML Mapper를 정의하고 등록
+	   - sql문을 정의하는 xml파일
+	   
+	5. MyBatis를 통해 작업을 할 수 있도록 사용자 정의 클래스
+	   - Controller -> Service -> DAO작성
+	   - 뷰 준비해서 요청부터 응답까지 필요한 뷰의 정보를 tiles 설정파일에 등록
+	   1) tiles에 뷰 등록
+	   2) 최초 요청이 시작되는 곳에서 링크 수정
+	   3) 컨트롤러 작성
+	   4) 서비스 작성
+	   5) DAO작성
+	   6) 응답되는 뷰를 수정해서 응답 결과를 출력할 수 있도록 작업
+	   
+	   
+	   
+	   
+	   
+	   
