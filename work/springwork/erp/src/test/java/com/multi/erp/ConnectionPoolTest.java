@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,10 +19,13 @@ public class ConnectionPoolTest {
 	DataSource ds;
 	@Autowired
 	JdbcTemplate template;
+	@Autowired
+	SqlSession sessionTemplate;
 	@org.junit.Test
 	public void test() {
 		try {
 			Connection con = ds.getConnection();
+			System.out.println(sessionTemplate);
 			System.out.println(con);
 			System.out.println(template);
 		} catch (SQLException e) {

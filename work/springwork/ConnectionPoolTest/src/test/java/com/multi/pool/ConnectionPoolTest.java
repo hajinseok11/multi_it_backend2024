@@ -1,12 +1,11 @@
 package com.multi.pool;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,12 @@ import org.springframework.util.StopWatch;
 public class ConnectionPoolTest {
 	@Autowired
 	DataSource ds;
+	@Autowired
+	SqlSession sessionTemplate;
 	@Test
 	public void test() {
 		System.out.println(ds);
+		System.out.println(sessionTemplate);
 		try {
 			StopWatch stopWatch = new StopWatch();
 			stopWatch.start();

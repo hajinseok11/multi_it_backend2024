@@ -28,41 +28,51 @@ public class BoardServiceImpl implements BoardService {
 		List<BoardDTO> boardlist = dao.boardList();
 		return boardlist;
 	}
+	
+	@Override
+	public List<BoardDTO> findByCategory(String category) {
+		// 조건을 판단해서 dao의 적절한 메소드를 호출하기 - 비지니스 로직
+		List<BoardDTO> list = null;
+		if(category!=null) {
+			if(category.equals("all")) {
+				list = dao.boardList();
+			}else {
+				list = dao.findByCategory(category);
+			}
+		}
+		return list;
+	}
 
 	@Override
 	public BoardDTO getBoardInfo(String board_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.read(board_no);
 	}
 
 	@Override
 	public int update(BoardDTO board) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(board);
 	}
 
 	@Override
 	public int delete(String board_no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(board_no);
 	}
 
 	@Override
 	public List<BoardDTO> search(String data) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.search(data);
 	}
 
 	@Override
 	public List<BoardDTO> search(String tag, String data) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.search(tag, data);
 	}
 
-	@Override
-	public List<BoardDTO> findByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

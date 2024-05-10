@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
+	// mybatis의 핵심클래스인 Sqlsession을 이용해서 sql문이 실행
 	private SqlSession sessionTemplate;
 	@Autowired 
 	public MemberDAOImpl(SqlSession sqlSessionTemplate) {
@@ -60,7 +61,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberDTO login(MemberDTO loginUser) {
 		// TODO Auto-generated method stub
-		return null;
+		return sessionTemplate.selectOne("com.multi.erp.member.login",loginUser);
 	}
 
 	@Override
