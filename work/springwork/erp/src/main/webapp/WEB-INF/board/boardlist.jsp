@@ -60,7 +60,11 @@
 						<td><a href = "/erp/board/read?board_no=${board.board_no}&action=READ">${board.title}</a></td>
 						<td>${board.id}</td>
 						<td>${board.write_date}</td>
+						<td>
+							<c:if test="${board.id==user.id}">
 						<td><a href = "/erp/board/delete?board_no=${board.board_no}">삭제</a></td>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE>
 <html>
@@ -77,18 +78,24 @@
 
 		<div class="form-group">
 			<div class="col-md-10 text-center">
-				<input type="button" class="btn btn-lg btn-primary" 
-				value="수정"
-				onclick="location.href='/erp/board/read?board_no=${board.board_no}&action=UPDATE'">
-
+			
 				<button type="button" class="btn btn-danger btn-lg"
 					onclick="location.href='/erp/board/list?category=all">
 					<i class="fa fa-fw fa-close"></i> 목록
 				</button>
-				<button type="button" class="btn btn-danger btn-lg"
-					id="deletebtn">
-					<i class="fa fa-fw fa-close"></i> 삭제
-				</button>
+				
+				
+				<c:if test= "${board.id==user.id}">	
+					<input type="button" class="btn btn-lg btn-primary" 
+					value="수정"
+					onclick="location.href='/erp/board/read?board_no=${board.board_no}&action=UPDATE'">
+				
+					<button type="button" class="btn btn-danger btn-lg"
+						id="deletebtn">
+						<i class="fa fa-fw fa-close"></i> 삭제
+					</button>
+				</c:if>
+
 			</div>
 		</div>
 	</form>

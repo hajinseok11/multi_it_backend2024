@@ -4,6 +4,8 @@ package com.multi.erp.board;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 public class BoardDTO {
 	String board_no;
@@ -12,9 +14,17 @@ public class BoardDTO {
 	String title;
 	String content;
 	String category;
+	List<MultipartFile> files;
+	// MultipartFile files;
 	public BoardDTO() {
 	}
-	public BoardDTO(String board_no, String id, Date write_date, String title, String content, String category) {
+	@Override
+	public String toString() {
+		return "BoardDTO [board_no=" + board_no + ", id=" + id + ", write_date=" + write_date + ", title=" + title
+				+ ", content=" + content + ", category=" + category + ", files=" + files + "]";
+	}
+	public BoardDTO(String board_no, String id, Date write_date, String title, String content, String category,
+			List<MultipartFile> files) {
 		super();
 		this.board_no = board_no;
 		this.id = id;
@@ -22,16 +32,8 @@ public class BoardDTO {
 		this.title = title;
 		this.content = content;
 		this.category = category;
+		this.files = files;
 	}
-	
-
-	@Override
-	public String toString() {
-		return "BoardDTO [board_no=" + board_no + ", id=" + id + ", write_date=" + write_date + ", title=" + title
-				+ ", content=" + content + ", category=" + category+"]";
-	}
-	
-	
 	public String getBoard_no() {
 		return board_no;
 	}
@@ -39,11 +41,9 @@ public class BoardDTO {
 		this.board_no = board_no;
 	}
 	public String getId() {
-		System.out.println("getId()");
 		return id;
 	}
 	public void setId(String id) {
-		System.out.println("setId()");
 		this.id = id;
 	}
 	public Date getWrite_date() {
@@ -70,5 +70,15 @@ public class BoardDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
+	
+	
+	
+	
 	
 }

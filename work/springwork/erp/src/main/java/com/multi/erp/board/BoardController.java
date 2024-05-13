@@ -1,6 +1,10 @@
 package com.multi.erp.board;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,19 +12,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.multi.erp.member.MemberDTO;
+import org.springframework.web.util.WebUtils;
 
 @Controller
-@RequestMapping("board/")
+@RequestMapping("/board")
 public class BoardController {
 	private BoardService service;
-	@Autowired
-	public BoardController (BoardService service) {
+	private FileUploadService fileuploadService;
+	
+	@Autowired	
+	public BoardController(BoardService service, FileUploadService fileuploadService) {
 		super();
-		this.service= service;
+		this.service = service;
+		this.fileuploadService = fileuploadService;
 	}
+	
+	
 	@GetMapping("/list")
 	public ModelAndView list(String category) {
 		System.out.println(category+"============");
@@ -35,14 +44,28 @@ public class BoardController {
 	
 		return mav;
 	}
+	
 	@GetMapping("/write")
 	public String writePage() {
 		return "board/writepage"; // view이름
 	}
+	// 게시글 등록을 위해 사용자가 입력한 내용과 첨부한 파일이 업로드 되도록 처리
 	@PostMapping("/write")
-	public String insert(BoardDTO board) {
-		System.out.println(board);
+	public String insert(BoardDTO board,HttpSession session) throws IllegalStateException, IOException {
+		System.out.println("파일업로드:"+board);
+		// 1. MultipartFile정보를 추출
+		List<MultipartFile> file = board.getFiles();
+		// 2. 업로드될 서버의 실제 위치를 추출
+		//	  - 실제 서버에서 인식하는 업로드될 파일이 저장될 폴더의 경로를 추출하기
+		//    - context 내부에 있으므로 ServletContext 객체를 이용
+		//    - ServletContext객체는 프로젝트(context)에 대한 정보를 담고 있는 객체이고 이 안에 실제 경로를
+		// 	  - 구할 수 있는 기능이 있음
+		// 	  - ServletContext는 세션객체를 통해 생성
+		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+		System.out.println("^^^^^^^^^^^^"+path);
 		service.insert(board);
+		// 3. 업로드로직을 처리하는 서비스의 메소드를 호출
+		fileuploadService.uploadFiles(file,path);
 		return "redirect:/board/list?category=all";
 	}
 	// 동적 쿼리를 테스트
@@ -67,7 +90,7 @@ public class BoardController {
 		if(action.equals("READ")) {
 			view = "board/read";
 		}else {
-			view = "board/read";
+			view = "board/update";
 		}
 		// 스프링이 만들어준 모델객체에 공유할 데이터를 공유한다.
 		model.addAttribute("board",board);

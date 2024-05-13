@@ -85,7 +85,10 @@
 	<beans:bean id = "sqlSession" class = "org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref = "sessionFactory"/>
 	</beans:bean>
-	
+	<!--=============================== 파일 업로드 ==============================  -->
+	<beans:bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name = "maxUploadSize" value = "4000000"/>
+	</beans:bean>
 </beans:beans>
 
 

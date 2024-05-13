@@ -42,11 +42,7 @@
 					</c:when>
 					<c:otherwise>
 			
-						<li><a href="/erp/schedule/list"><span class="glyphicon glyphicon-log-out"></span>
-								나의스케쥴</a></li>
-								<li><a href="/erp/member/mypage"><span class="glyphicon glyphicon-log-out"></span>
-								마이페이지</a></li>
-						<li><a href="/erp/member/spring/logout"><span class="glyphicon glyphicon-log-out"></span>
+						<li><a href="/erp/member/logout"><span class="glyphicon glyphicon-log-out"></span>
 								Logout</a></li>
 						</ul>
 					
@@ -70,7 +66,7 @@
 	<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/erp/index.do">Home</a></li>
+					<li class="active"><a href="#">Home</a></li>
 					<li><a href="/erp/menu/insa.do">업무관리</a></li>
 					<li><a href="#">자원관리</a></li>
 					<li><a href="/erp/board/list?category=all">커뮤니티</a></li>

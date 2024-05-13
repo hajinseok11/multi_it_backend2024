@@ -39,7 +39,44 @@
 	   5) DAO작성
 	   6) Mapper에 sql등록
 	   7) 응답되는 뷰를 수정해서 응답 결과를 출력할 수 있도록 작업
-	   
+[파일 업로드]
+1. 1단계 - 설정
+	1) 라이브러리 등록
+	   - 메이븐 중앙저장소에서 검색해서 사용
+	   - pom.xml에 라이브러리 등록
+	2) spring설정파일에 등록
+	   - CommonMultipartResolver를 spring-config.xml에 등록
+	   --------------------------
+	   id는 무조건 multipartResolver로 등록해야한다.
+	   spring mvc 내부에서 multipartResolver로 등록된 빈을 찾아서 파일 업로드를 처리
+	   enctype= "multipart/form-data"로 처리하고 CommonsMultipartResolver의 id를 다르게 등록하면 파일과 폼데이터를 읽어올 수 없다.
+	3) 업로드될 파일이 저장될 폴더를 생성
+	
+2. 2단계 - 파일 업로드처리
+	- 실제 업로드되는 서버의 위치가 필요
+	- 업로드 될 원본 파일명과 중복되지 않도록 식별할 수 있는 파일명을 생생해서 업로드하기
+	- 파일 업로드와 폼데이터가 같이 서버로 전송되어야 하므로 무조건 enctype="multipart/form-data"로 전송해야 하고 method="post"로 정의해야한다.
+	  HTML 폼 전송 방식
+	  ① application/x-www-form-urlencoded은 폼데이터를 name=value&name=value....의 형태로 전송하라는 의미
+		- 이 폼데이터 전송방식은 폼데이터를 name=value&name=value...의 형태로 전송하라는 의미
+		- HTML폼 데이터를 서버로 전송하는 가장 기본적인 방법
+		- 별도로 enctype설정을 정의하지 않으면 request 헤더에 application/x-www-form-urlencoded로 전송되었음이 추가
+		- 입력한 데이터는 요청메세지의 body에 name=value&name=value의 형식으로 전송
+		  입력한 파라미터와 파라미터는 &기호로 구분된다.
+		  
+	 - 사용자가 입력한 데이터와 업로드할 파일에 대한 정보를 같이 받아서 처리할 수 있도록 작업
+	   스프링MVC에서 클라이언트가 입력한 데이터를 객체로 만들어서 컨트롤러에 전송
+	 								   ----
+	 									DTO
+										 |__ 스프링 MVC에서 업로드되는 파일을 MultipartFile로 관리
+										 	 업로드되는 파일을 받아서 처리하기 위해서 DTO에 멤버변수로 정의
+										 	 멤버변수명은 html태그의 정의된 name과 동일
+										 	 업로드하는 파일이 여러개인 경우 spring mvc List<MultipartFile>로 관리하거나 
+										 	 						 		   MultipartFile[]로 만들어서 넘겨준다
+		  
+3. 3단계 - 업로드되는 정보가 디비에 저장(트랜잭션처리하기)
+
+4. 4단계 - 파일 다운로드
 	   
 	   
 	   
