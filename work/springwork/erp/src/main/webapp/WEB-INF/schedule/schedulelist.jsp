@@ -71,17 +71,17 @@
                 <td>2024-06.12</td>
                 <td>미완료</td>
               </tr>
+           <c:forEach var = "schedule" items = "${schedulelist}">
+				<tr>
+					<td>${schedule.scheduleId}</td>
+					<td>${schedule.title}</a></td>
+					<td>${schedule.category}</td>
+					<td>${schedule.scheduleDay}</td>
+					<td>${schedule.state}</td>
+				</tr>
+			</c:forEach>
               
-              
-				<c:forEach var = "schedule" items = "${schedulelist}">
-					<tr>
-						<td>${schedule.scheduleId}</td>
-						<td>${schedule.title}</a></td>
-						<td>${schedule.category}</td>
-						<td>${schedule.scheduleDay}</td>
-						<td>${schedule.state}</td>
-					</tr>
-				</c:forEach>
+				
 			
             
             

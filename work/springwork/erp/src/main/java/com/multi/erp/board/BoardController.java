@@ -51,7 +51,8 @@ public class BoardController {
 	}
 	// 게시글 등록을 위해 사용자가 입력한 내용과 첨부한 파일이 업로드 되도록 처리
 	@PostMapping("/write")
-	public String insert(BoardDTO board,HttpSession session) throws IllegalStateException, IOException {
+	public String insert(BoardDTO board,HttpSession session) 
+									throws IllegalStateException, IOException {
 		System.out.println("파일업로드:"+board);
 		// 1. MultipartFile정보를 추출
 		List<MultipartFile> file = board.getFiles();
@@ -63,9 +64,11 @@ public class BoardController {
 		// 	  - ServletContext는 세션객체를 통해 생성
 		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
 		System.out.println("^^^^^^^^^^^^"+path);
-		service.insert(board);
+		
 		// 3. 업로드로직을 처리하는 서비스의 메소드를 호출
-		fileuploadService.uploadFiles(file,path);
+		List<BoardFileDTO> boardfiledtolist = fileuploadService.uploadFiles(file,path);
+		System.out.println(boardfiledtolist);
+		service.insert(board,boardfiledtolist);
 		return "redirect:/board/list?category=all";
 	}
 	// 동적 쿼리를 테스트
@@ -85,6 +88,7 @@ public class BoardController {
 	@GetMapping("/read")
 	public String read(String board_no,String action, Model model) {
 		BoardDTO board = service.getBoardInfo(board_no);
+		List<BoardFileDTO> boardfiledtolist = service.getFileList(board_no);
 		System.out.println("**************************" + board);
 		String view = "";
 		if(action.equals("READ")) {
@@ -94,6 +98,7 @@ public class BoardController {
 		}
 		// 스프링이 만들어준 모델객체에 공유할 데이터를 공유한다.
 		model.addAttribute("board",board);
+		model.addAttribute("boardfiledtolist",boardfiledtolist);
 		// 모델객체에 데이터를 공유했으므로 뷰 정보만 리턴
 		// => 리턴되면서 DispatcherServlet에 ModelAndView객체로 만들어져서 리턴된다.
 		return view;
@@ -106,7 +111,7 @@ public class BoardController {
 	}
 	@GetMapping("/delete")
 	public String delete(String board_no) {
-		service.getBoardInfo(board_no);
+		service.delete(board_no);
 		return "redirect:/board/list?category=all";
 	}	
 }

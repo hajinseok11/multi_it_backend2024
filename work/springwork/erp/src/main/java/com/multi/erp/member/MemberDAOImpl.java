@@ -24,8 +24,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int insert(MemberDTO user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sessionTemplate.insert("com.multi.erp.member.insert",user);
 	}
 
 	@Override

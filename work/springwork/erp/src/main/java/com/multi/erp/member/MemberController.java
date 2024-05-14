@@ -1,5 +1,6 @@
 package com.multi.erp.member;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
+
+import com.multi.erp.board.FileUploadService;
+import com.multi.erp.dept.DeptDTO;
+import com.multi.erp.dept.DeptService;
 //@SessionAttributes("user") user라는 것은 세션에 저장하는 어트리뷰트의 이름
 //스프링 MVC 프레임워크 내부에서 컨트롤러에서 user라는 이름으로 공유된 Model객체에 저장된 어트리뷰트를 찾아서 
 //"user"라는 이름의 어트리뷰트가 있으면 이를 세션에도 저장을 해준다.
@@ -23,11 +30,17 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes("user")
 public class MemberController {
 	private MemberService service;
+	private DeptService deptservice;
+	private FileUploadService fileuploadservice;
+	
 	@Autowired
-	public MemberController(MemberService service) {
+	public MemberController(MemberService service, DeptService deptservice, FileUploadService fileuploadservice) {
 		super();
 		this.service = service;
+		this.deptservice = deptservice;
+		this.fileuploadservice = fileuploadservice;
 	}
+	
 	@GetMapping("/list")
 	public ModelAndView list() {	
 		ModelAndView mav = new ModelAndView("member/list");
@@ -39,6 +52,7 @@ public class MemberController {
 		mav.addObject("memberlist",memberlist);
 		return mav;
 	}
+	
 	// 로그인 - 기존방식
 	@PostMapping("/login")
 	public String login(MemberDTO loginUserInfo,Model model,HttpServletRequest request) {
@@ -101,6 +115,28 @@ public class MemberController {
 		// MemberDTO user = (MemberDTO) session.getAttribute("user");
 		System.out.println("로그인사용자=>" + user);
 		return user.getMenupath();
+	}
+	
+	@GetMapping("/insert")
+	public String insertpage(Model model) {
+		// 기존의 DeptServiceImpl의 select메소드를 호출해서 결과를 공유
+		List<DeptDTO> deptlist = deptservice.select();
+		model.addAttribute("deptlist",deptlist);
+		return "member/insert";
+	}
+	@PostMapping("/insert")
+	public String insert(MemberDTO user,HttpSession session) throws IllegalStateException, IOException {
+		System.out.println(user);
+		// 1. 파일업로드
+		MultipartFile file = user.getUserImage();
+		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+		String storeFilename = fileuploadservice.uploadFile(file, path);
+		user.setProfile_photo(storeFilename);
+		user.setGender("0");
+		System.out.println(user);
+		service.insert(user);
+
+		return "member/insert";
 	}
 	
 }

@@ -19,11 +19,6 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int insert(BoardDTO board) {
-		return sqlSessionTemplate.insert("com.multi.erp.board.insert",board);
-	}
-	
-	@Override
 	public List<BoardDTO> boardList() {
 		System.out.println("boardDAO");
 		// SqlSession의 selectlist는 여러개의 레코드를 반환하는 sql명령문을 실행하기 위해 제공되는 메소드
@@ -52,9 +47,9 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int delete(String data) {
+	public int delete(String board_no) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.delete("com.multi.erp.board.search",data);
+		return sqlSessionTemplate.delete("com.multi.erp.board.delete",board_no);
 	}
 
 	@Override
@@ -73,6 +68,30 @@ public class BoardDAOImpl implements BoardDAO {
 		map.put("data",data);
 		list = sqlSessionTemplate.selectList("com.multi.erp.board.dynamicSearch",map);
 		return list;
+	}
+	
+	// 게시글 저장
+	@Override
+	public int insert(BoardDTO board) {
+		return sqlSessionTemplate.insert("com.multi.erp.board.insert",board);
+	}
+	// 첨부파일을 저장하기 위한 메소드
+	@Override
+	public int insertFile(List<BoardFileDTO> boardfiledtolist) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.insert("com.multi.erp.board.fileinsert",boardfiledtolist);
+	}
+
+	@Override
+	public List<BoardFileDTO> getFileList(String boardno) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("com.multi.erp.board.fileselect",boardno);
+	}
+
+	@Override
+	public BoardFileDTO getFile(BoardFileDTO inputdata) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

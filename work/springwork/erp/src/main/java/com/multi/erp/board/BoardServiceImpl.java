@@ -73,6 +73,35 @@ public class BoardServiceImpl implements BoardService {
 		return dao.search(tag, data);
 	}
 
+	/**
+	 * 게시글 등록 버튼을 눌렀을 때 실행될 메소드
+	 * - 두 개의 작업을 처리
+	 * - tbboard에 게시글에 입력한 내용을 저장, board_file테이블에 첨부한 파일의 내용을 저장
+	 * - dao에 정의된 메소드 2개를 호출
+	 * - 서비스메소드에서 호출되는 두 개의 메소드가 모두 정상처리가 되어야 db에 반영될 수 있도록 처ㅣㄹ
+	 * - 만약 두 작업 중 하나의 작업만 처리가 되고 오류가 발생되면 모든 작업이 취소되도록 처리해야 한다.
+	 * - 논리적인 작업(작업 한 개)
+	 * - 트랜잭션 처리
+	 */
+	@Override
+	public int insert(BoardDTO board, List<BoardFileDTO> boardfiledtolist) {
+		dao.insert(board);
+		dao.insertFile(boardfiledtolist);
+		return 0;
+	}
+
+	@Override
+	public List<BoardFileDTO> getFileList(String boardno) {
+		// TODO Auto-generated method stub
+		return dao.getFileList(boardno);
+	}
+
+	@Override
+	public BoardFileDTO getFile(BoardFileDTO inputdata) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

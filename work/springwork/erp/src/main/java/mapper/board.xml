@@ -9,11 +9,30 @@
 	<select id = "categorySelect" parameterType="String" resultType = "board">
 		select * from tbboard where category=#{category}
 	</select>
+
+	<!-- 게시글에 글 등록하기 -->
 	<!-- #{}으로 변수를 연결하면 PreparedStatement의 ?와 연결 -->
 	<insert id="insert" parameterType="board">
 		insert into tbboard 
 		values(tbboard_seq.nextval,#{id},#{title},#{content},sysdate,#{category})
 	</insert>
+	
+	<!-- 게시글에 첨부되는 파일 정보를 등록 -->
+	<insert id = "fileinsert" parameterType = "java.util.List">
+		insert all
+		<foreach collection="list" item = "file" separator = " ">
+			into board_file values(#{file.board_file_no}, tbboard_seq.currval,
+				#{file.originalFilename},#{file.storeFilename})
+		</foreach>
+		select * from dual
+	</insert>
+	<!--======================================================  -->
+	<!-- 게시글에 첨부한 첨부파일 목록 가져오기 -->
+	<select id = "fileselect" parameterType="String" resultType = "boardfile">
+		select * from board_file where board_no=#{boardno}	
+	</select>	
+	
+	
 	
 	<select id ="search" parameterType = "String" resultType="board" > 
 		select * from tbboard where title like'%' || #{title} || '%'
@@ -22,9 +41,9 @@
 	<select id ="read" parameterType = "String" resultType="board" > 
 		select * from tbboard where board_no = #{board_no}
 	</select>
-	<select id ="delete" parameterType = "String" > 
-		delete * from tbboard where board_no = #{board_no}
-	</select>
+	<delete id ="delete" parameterType = "String" > 
+		delete from tbboard where board_no = #{board_no}
+	</delete>
 	<select id ="update" parameterType = "board" > 
 		update tbboard
 		set title=#{title},content=#{content},category=#{category}

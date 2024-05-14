@@ -6,8 +6,16 @@
 	<select id="selectall" resultType="member">
 		select * from member
 	</select>
-	<select id="login" resultType="member">
-		select * from member
+	<select id="login" resultType="member" parameterType = "member">
+		select m.* , d.deptname, j.menupath, j.job_category
+		from member m, dept d, job j
 		where id=#{id} and pass = #{pass}
+			and m.deptno = d.deptno
+			and d.job_category = j.job_id
 	</select>
+	<insert id="insert" parameterType="member">
+		insert into member values(#{id},#{pass},#{name},#{ssn},#{birthday},#{marry},
+		#{gender},null,null,null,sysdate(),null,#{deptno},null,#{zipcode},#{addr},#{detailaddr},
+		#{phonehome},#{phoneco},#{phonecell},#{email},#{profile_photo})
+	</insert>
 </mapper>
