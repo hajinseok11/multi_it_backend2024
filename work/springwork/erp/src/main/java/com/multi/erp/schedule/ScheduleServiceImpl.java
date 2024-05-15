@@ -39,8 +39,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 	@Override
 	public List<ScheduleDTO> printSchedule(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.printSchedule(id);
 	}
 
 }

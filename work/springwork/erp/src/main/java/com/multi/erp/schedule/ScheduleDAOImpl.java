@@ -40,8 +40,7 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 
 	@Override
 	public List<ScheduleDTO> printSchedule(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectList("com.multi.erp.schedule.select",id);
 	}
 
 }

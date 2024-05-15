@@ -23,9 +23,8 @@
 		 $("#category").change(function(){
 			// select가 변경되는 change이벤트가 발생하면 컨트롤러를 요청
 			// alert($(this).val())
-
-			location.href = "/erp/board/list?category="+$(this).val()
-		})
+			location.href = "/erp/board/list?category="+$(this).val();
+		});
 	});
 </script>
 </head>
@@ -61,8 +60,8 @@
 						<td>${board.id}</td>
 						<td>${board.write_date}</td>
 						<td>
-							<c:if test="${board.id==user.id}">
-						<td><a href = "/erp/board/delete?board_no=${board.board_no}">삭제</a></td>
+							<c:if test="${user != null && board.id == user.id}">
+								<a href = "/erp/board/delete?board_no=${board.board_no}">삭제</a>
 							</c:if>
 						</td>
 					</tr>

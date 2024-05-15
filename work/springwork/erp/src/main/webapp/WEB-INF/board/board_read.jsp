@@ -13,7 +13,8 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-
+	// jQuery를 이용해서 select에서 선택을 하면 컨트롤러가 요청되도록 처리
+	
 	$(document).ready(function(){
 		let category = "${board.category}"; 
 		 $("#category").val(category).attr("selected","selected");
@@ -24,22 +25,19 @@
 </head>
 <body>
 
-	<form class="form-horizontal" 
-		action="" 
-		method="post" >
+	<form class="form-horizontal" action="" method="post">
 
-		
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="id" class="control-label">번호</label>
 			</div>
-			<div class="col-md-8">${board.board_no}</div>
+			<div class="col-md-8">${board.board_no }</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="id" class="control-label">게시글종류</label>
 			</div>
-			<div class="col-md-3">${board.category}
+			<div class="col-md-3">
 				<select name="category" class="form-control" 
 							id="category">
 					<option value="경조사" >경조사</option>
@@ -52,27 +50,27 @@
 			<div class="col-md-2 text-right">
 				<label for="id" class="control-label">작성자</label>
 			</div>
-			<div class="col-md-8">${board.id}</div>
+			<div class="col-md-8">${board.id }</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="title" class="control-label">제목</label>
 			</div>
-			<div class="col-md-8">${board.title}</div>
+			<div class="col-md-8">${board.title }</div>
 		</div>
+		
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="title" class="control-label">첨부파일</label>
 			</div>
 			<div class="col-md-8">
-				<!-- 디비에 저장된 파일명을 출력 -->
-				<c:forEach var = "file" items = "${boardfiledtolist}">
-					<h4>${file.originalFilename}</h4>
-					<img src="/erp/upload/${file.storeFilename} " width = "200">
+				<!-- 디비에 저장된 파일명을 출력  -->
+				<c:forEach var="file" items="${boardfiledtolist }">
+					<h4>${file.originalFilename }</h4>
+					<img src="/erp/upload/${ file.storeFilename}" width="200">
 				</c:forEach>
 			</div>
 		</div>
-		
 		
 		<div class="form-group">
 			<div class="col-md-2 text-right">
@@ -86,30 +84,27 @@
 			</div>
 			<div class="col-md-8"
 				style="width: 500px; height: 400px; border: solid 1px;">
-				${board.content}
-				</div>
+				${board.content }</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-10 text-center">
-			
+				
 				<button type="button" class="btn btn-danger btn-lg"
-					onclick="location.href='/erp/board/list?category=all">
+					onclick="location.href='/erp/board/list?category=all'">
 					<i class="fa fa-fw fa-close"></i> 목록
 				</button>
 				
+				<c:if test="${user != null && board.id == user.id }">
+					<input type="button" class="btn btn-lg btn-primary" value="수정"
+						onclick="location.href='/erp/board/read?board_no=${board.board_no}&action=update'">
+				</c:if>
 				
-				<c:if test= "${board.id==user.id}">	
-					<input type="button" class="btn btn-lg btn-primary" 
-					value="수정"
-					onclick="location.href='/erp/board/read?board_no=${board.board_no}&action=UPDATE'">
-				
-					<button type="button" class="btn btn-danger btn-lg"
-						id="deletebtn">
+				<c:if test="${user != null && board.id == user.id }">
+					<button type="button" class="btn btn-danger btn-lg" id="deletebtn">
 						<i class="fa fa-fw fa-close"></i> 삭제
 					</button>
 				</c:if>
-
 			</div>
 		</div>
 	</form>

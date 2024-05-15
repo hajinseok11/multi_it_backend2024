@@ -3,8 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.multi.erp.schedule">
+ 	 <select id = "select" parameterType="String" resultType = "schedule">
+	 	select * from schedule
+	 	where scheduleuserid = #{scheduleuserid}
+	 </select>
+ 
 	 <insert id="insert" parameterType="schedule">
 		  insert into schedule 
-		  values(#{scheduleId},#{scheduleUserId},#{scheduleDay},#{title},#{category},#{boss},#{place},#{content},#{state})
+		  values(schedule_seq.nextval,#{scheduleUserId},#{scheduleDay},#{title},
+		  #{category},#{boss},#{place},#{content},'미완료')
 	 </insert>
+	
  </mapper>

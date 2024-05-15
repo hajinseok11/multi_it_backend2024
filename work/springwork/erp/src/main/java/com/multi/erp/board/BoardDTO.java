@@ -16,12 +16,22 @@ public class BoardDTO {
 	String category;
 	List<MultipartFile> files;
 	// MultipartFile files;
+	// MultipartFile[] files;
 	public BoardDTO() {
 	}
 	@Override
 	public String toString() {
 		return "BoardDTO [board_no=" + board_no + ", id=" + id + ", write_date=" + write_date + ", title=" + title
 				+ ", content=" + content + ", category=" + category + ", files=" + files + "]";
+	}
+	public BoardDTO(String board_no, String id, Date write_date, String title, String content, String category) {
+		super();
+		this.board_no = board_no;
+		this.id = id;
+		this.write_date = write_date;
+		this.title = title;
+		this.content = content;
+		this.category = category;
 	}
 	public BoardDTO(String board_no, String id, Date write_date, String title, String content, String category,
 			List<MultipartFile> files) {

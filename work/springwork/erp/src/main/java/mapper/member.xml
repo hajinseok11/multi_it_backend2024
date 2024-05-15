@@ -15,7 +15,7 @@
 	</select>
 	<insert id="insert" parameterType="member">
 		insert into member values(#{id},#{pass},#{name},#{ssn},#{birthday},#{marry},
-		#{gender},null,null,null,sysdate(),null,#{deptno},null,#{zipcode},#{addr},#{detailaddr},
-		#{phonehome},#{phoneco},#{phonecell},#{email},#{profile_photo})
+		#{gender},null,null,null,sysdate,null,#{deptno},null,#{zipcode},#{addr},
+		#{detailaddr},#{phonehome},#{phoneco},#{phonecell},#{email},#{profile_photo})
 	</insert>
 </mapper>

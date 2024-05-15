@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-<tiles:insertAttribute name = "top"></tiles:insertAttribute>
-</div>
 			<div class="col-lg-10">
 				<form role="form" class="form-horizontal"
 					action="/erp/dept/insert.do" method="post"
@@ -155,12 +150,6 @@
 							<!-- Button -->
 							<div class="col-sm-3 col-sm-offset-2">
 								<input type="submit" value="등록하기" class="btn btn-success" />
-							</div>
-							<div>
-							<tiles:insertAttribute name = "menu"></tiles:insertAttribute>
-							</div>
-							<div>
-							<tiles:insertAttribute name = "content"></tiles:insertAttribute>
 							</div>
 						</div>
 					</fieldset>

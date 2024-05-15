@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,43 +50,20 @@
                 <th>진행상황</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>부서확장협의</td>
-                <td>회의</td>
-                <td>2024-04-14</td>
-                <td>완료</td>
-              </tr>
-             <tr>
-                <td>2</td>
-                <td>부서확장임원발표회</td>
-                <td>발표</td>
-                <td>2024-05-14</td>
-                <td>미완료</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>혁신지구 탐방 - 울산</td>
-                <td>출장</td>
-                <td>2024-06.12</td>
-                <td>미완료</td>
-              </tr>
-           <c:forEach var = "schedule" items = "${schedulelist}">
-				<tr>
-					<td>${schedule.scheduleId}</td>
-					<td>${schedule.title}</a></td>
-					<td>${schedule.category}</td>
-					<td>${schedule.scheduleDay}</td>
-					<td>${schedule.state}</td>
-				</tr>
-			</c:forEach>
-              
-				
-			
-            
-            
-           
+           	<tbody>
+              <c:if test="${ schedulelist != null }">
+	           <c:forEach var = "schedule" items = "${schedulelist}" varStatus="status">
+					<tr>
+						<td>${schedule.scheduleId}</td>
+						<td>${schedule.title}</td>
+						<td>${schedule.category}</td>
+						<td> <fmt:formatDate value="${ schedule.scheduleDay }"
+									pattern="yyyy-MM-dd" var="fmtDate" />${ fmtDate }</td> 
+									<!--scheduleDay의 값을 날짜 형태로 변경하여 반환  -->
+						<td>${schedule.state}</td> 
+					</tr>
+				</c:forEach> 
+				</c:if>
             </tbody>
           </table>
 

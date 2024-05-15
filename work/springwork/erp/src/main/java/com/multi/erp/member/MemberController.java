@@ -134,6 +134,7 @@ public class MemberController {
 		user.setProfile_photo(storeFilename);
 		user.setGender("0");
 		System.out.println(user);
+		//2. 디비에 저장하기
 		service.insert(user);
 
 		return "member/insert";

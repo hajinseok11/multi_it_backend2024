@@ -21,7 +21,6 @@ import org.springframework.web.util.WebUtils;
 public class BoardController {
 	private BoardService service;
 	private FileUploadService fileuploadService;
-	
 	@Autowired	
 	public BoardController(BoardService service, FileUploadService fileuploadService) {
 		super();
@@ -64,7 +63,6 @@ public class BoardController {
 		// 	  - ServletContext는 세션객체를 통해 생성
 		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
 		System.out.println("^^^^^^^^^^^^"+path);
-		
 		// 3. 업로드로직을 처리하는 서비스의 메소드를 호출
 		List<BoardFileDTO> boardfiledtolist = fileuploadService.uploadFiles(file,path);
 		System.out.println(boardfiledtolist);

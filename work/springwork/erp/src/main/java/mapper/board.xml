@@ -44,11 +44,11 @@
 	<delete id ="delete" parameterType = "String" > 
 		delete from tbboard where board_no = #{board_no}
 	</delete>
-	<select id ="update" parameterType = "board" > 
+	<update id ="update" parameterType = "board" > 
 		update tbboard
 		set title=#{title},content=#{content},category=#{category}
 		where board_no = #{board_no}
-	</select>
+	</update>
 	<!-- where절을 태그로 표현할 수 있다. 조건이 있는 경우는 where을 생성하고 조건이 없는 경우는 where절이 추가되지 않도록 처리  -->
 	<select id = "dynamicSearch" resultType = "board" parameterType = "Map">
 		select * from tbboard
@@ -63,6 +63,7 @@
 				content like '%' || #{data} || '%'	
 			</if>
 			<if test = "tag =='write_date' and data!='' ">
+				<!-- trunc(write_date) &lt;= #{data} -->
 				<![CDATA[
 					trunc(write_date) <= #{data}
 				]]>
