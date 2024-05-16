@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,19 +18,19 @@
 
      <div class="input-group mb-3" style="margin-top:20px;">
           <select  class="form-select-sm btn-primary " id="searhKey" name="searchKey">
-            <option>선택하세요</option>
-            <option>1월</option>
-            <option>2월</option>
-            <option>3월</option>
-            <option>4월</option>
-            <option>5월</option>
-            <option>6월</option>
-            <option>7월</option>
-            <option>8월</option>
-            <option>9월</option>
-            <option>10월</option>
-            <option>11월</option>
-            <option>12월</option>
+            <option value="all">선택하세요</option>
+            <option value="1">1월</option>
+            <option value="2">2월</option>
+            <option value="3">3월</option>
+            <option value="4">4월</option>
+            <option value="5">5월</option>
+            <option value="6">6월</option>
+            <option value="7">7월</option>
+            <option value="8">8월</option>
+            <option value="9">9월</option>
+            <option value="10">10월</option>
+            <option value="11">11월</option>
+            <option value="12">12월</option>
           </select>
           
             <input type="text" class="form-control" placeholder="Search">
@@ -48,22 +47,22 @@
                 <th>분류</th>
                 <th>스케쥴진행날짜</th>
                 <th>진행상황</th>
+                <th>삭제</th>
               </tr>
             </thead>
-           	<tbody>
-              <c:if test="${ schedulelist != null }">
-	           <c:forEach var = "schedule" items = "${schedulelist}" varStatus="status">
+            <tbody>
+              <c:forEach var="schedule" items="${schedulelist }">
 					<tr>
-						<td>${schedule.scheduleId}</td>
-						<td>${schedule.title}</td>
-						<td>${schedule.category}</td>
-						<td> <fmt:formatDate value="${ schedule.scheduleDay }"
-									pattern="yyyy-MM-dd" var="fmtDate" />${ fmtDate }</td> 
-									<!--scheduleDay의 값을 날짜 형태로 변경하여 반환  -->
-						<td>${schedule.state}</td> 
+						<td>${schedule.scheduleId }</td>
+						<td><a href="/erp/schedule/read?scheduleId=${schedule.scheduleId }&action=READ">${schedule.title }</a></td>
+						<td>${schedule.category }</td>
+						<td>${schedule.scheduleDay }</td>
+						<td>${schedule.place }</td>
+							<c:if test="${schedule.scheduleId == schedule.scheduleId }">
+								<td><a href="/erp/schedule/delete?scheduleId=${schedule.scheduleId }">삭제</a>${schedule.scheduleId}</td>
+							</c:if>
 					</tr>
-				</c:forEach> 
-				</c:if>
+				</c:forEach>
             </tbody>
           </table>
 

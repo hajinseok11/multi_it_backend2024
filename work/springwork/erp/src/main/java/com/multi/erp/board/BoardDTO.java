@@ -15,14 +15,9 @@ public class BoardDTO {
 	String content;
 	String category;
 	List<MultipartFile> files;
-	// MultipartFile files;
-	// MultipartFile[] files;
+	//MultipartFile files;
+	//MultipartFile[] files;
 	public BoardDTO() {
-	}
-	@Override
-	public String toString() {
-		return "BoardDTO [board_no=" + board_no + ", id=" + id + ", write_date=" + write_date + ", title=" + title
-				+ ", content=" + content + ", category=" + category + ", files=" + files + "]";
 	}
 	public BoardDTO(String board_no, String id, Date write_date, String title, String content, String category) {
 		super();
@@ -33,6 +28,7 @@ public class BoardDTO {
 		this.content = content;
 		this.category = category;
 	}
+	
 	public BoardDTO(String board_no, String id, Date write_date, String title, String content, String category,
 			List<MultipartFile> files) {
 		super();
@@ -44,6 +40,17 @@ public class BoardDTO {
 		this.category = category;
 		this.files = files;
 	}
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
+	@Override
+	public String toString() {
+		return "BoardDTO [board_no=" + board_no + ", id=" + id + ", write_date=" + write_date + ", title=" + title
+				+ ", content=" + content + ", category=" + category + ", files=" + files + "]";
+	}
 	public String getBoard_no() {
 		return board_no;
 	}
@@ -51,9 +58,11 @@ public class BoardDTO {
 		this.board_no = board_no;
 	}
 	public String getId() {
+//		System.out.println("getId()");
 		return id;
 	}
 	public void setId(String id) {
+//		System.out.println("setId()");
 		this.id = id;
 	}
 	public Date getWrite_date() {
@@ -80,15 +89,5 @@ public class BoardDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public List<MultipartFile> getFiles() {
-		return files;
-	}
-	public void setFiles(List<MultipartFile> files) {
-		this.files = files;
-	}
-	
-	
-	
-	
 	
 }

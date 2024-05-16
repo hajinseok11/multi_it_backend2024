@@ -17,6 +17,7 @@ public class DeptDAOImpl implements DeptDAO {
 	@Override
 	public int insert(DeptDTO dept) {
 		String sql = "insert into dept values(?,?,?,null,?,?,?,?,?,?,?)";
+		
 		return template.update(sql,dept.getDeptno(),dept.getDeptname(),dept.getDeptStartDay(),
 				dept.getDeptlevel(),dept.getDeptstep(),dept.getDeptuppercode(),dept.getJob_category(),
 				dept.getMgr_id(),dept.getDeptaddr(),dept.getDepttel());

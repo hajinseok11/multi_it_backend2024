@@ -24,14 +24,14 @@
 		<div class="col-lg-12">
 			<div class="form-panel">
 			
-				<form class="form-horizontal style-form" action="/erp/board/write" 
-					method="post" enctype="multipart/form-data"> 
+				<form class="form-horizontal style-form" 
+					action="/erp/board/write" method="post" enctype="multipart/form-data">
 					<div class="form-group" style="border: 1px solid #eff2f7;">
 						
 						<label class="col-sm-2 col-sm-2 control-label">작성자</label>
 						<div class="col-sm-10">
-							<input type="hidden" name="id" value="${user.id}" />
-							<p class="form-control-static"> ${user.name } </p>
+							<input type="hidden" name="id" value="${user.id }">
+							<p class="form-control-static">${user.name }</p>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">게시글 유형</label>
@@ -47,10 +47,12 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">제목</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" name="title">
+								<input type="text" class="form-control"
+										 name="title">
 								<span class="help-block">게시글 유형에 맞는 내용으로 작성 부탁드립니다. </span>
 							</div>
 						</div>
+						
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">내용</label>
 							<div class="col-sm-8">
@@ -70,7 +72,7 @@
 									id="files" placeholder="파일선택" multiple="multiple">
 							</div>
 						</div>
-						<div class="form-group">
+			 			<div class="form-group">
 							<div class="col-md-2 text-right">
 								<label for="title" class="control-label">파일2</label>
 							</div>
@@ -105,8 +107,8 @@
 								<input type="file" class="form-control input-lg" name="files"
 									id="title" placeholder="파일선택">
 							</div>
-						</div> -->
-						
+						</div>
+						 
 						
 						
 						

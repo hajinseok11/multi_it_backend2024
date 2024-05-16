@@ -24,5 +24,5 @@ public interface BoardService {
 	
 	//게시글을 상세보기한 경우 보여질 업로드한 파일의 목록 조회
 	List<BoardFileDTO> getFileList(String boardno);
-	BoardFileDTO getFile(BoardFileDTO inputdata);
+	BoardFileDTO getFile(String boardFileno);
 }

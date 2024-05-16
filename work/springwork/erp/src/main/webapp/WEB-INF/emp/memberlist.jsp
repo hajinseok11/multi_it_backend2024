@@ -40,13 +40,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var = "member" items = "${memberlist}">
+				<c:forEach var="member" items="${memberlist }">
 					<tr>
-					<th><input type="checkbox" id=""/></th>
-					<td>${member.id}</td>
-					<td>${member.name}</td>
-					<td>${member.deptno}</td>
-					<td>${member.startday}</td>
+						<td><input type="checkbox" id=""/></td>
+						<td>${member.id }</td>
+						<td>${member.name }</td>
+						<td>${member.deptno }</td>
+						<td>${member.startday }</td>
 					</tr>
 				</c:forEach>
 			</tbody>

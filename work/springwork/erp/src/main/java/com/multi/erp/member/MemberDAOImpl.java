@@ -5,17 +5,15 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 @Repository
 public class MemberDAOImpl implements MemberDAO {
-	// mybatis의 핵심클래스인 Sqlsession을 이용해서 sql문이 실행
 	private SqlSession sessionTemplate;
-	@Autowired 
-	public MemberDAOImpl(SqlSession sqlSessionTemplate) {
+	@Autowired
+	public MemberDAOImpl(SqlSession sessionTemplate) {
 		super();
-		this.sessionTemplate = sqlSessionTemplate;
+		this.sessionTemplate = sessionTemplate;
 	}
-	
+
 	@Override
 	public List<MemberDTO> getTreeEmpList(String deptno) {
 		// TODO Auto-generated method stub
@@ -24,12 +22,13 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int insert(MemberDTO user) {
-		return sessionTemplate.insert("com.multi.erp.member.insert",user);
+		// TODO Auto-generated method stub
+		return sessionTemplate.insert("com.multi.erp.member.insert", user);
 	}
 
 	@Override
 	public List<MemberDTO> getMemberList() {
-		System.out.println("MemberDAO");
+		// TODO Auto-generated method stub
 		return sessionTemplate.selectList("com.multi.erp.member.selectall");
 	}
 
@@ -60,7 +59,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberDTO login(MemberDTO loginUser) {
 		// TODO Auto-generated method stub
-		return sessionTemplate.selectOne("com.multi.erp.member.login",loginUser);
+		return sessionTemplate.selectOne("com.multi.erp.member.login", loginUser);
 	}
 
 	@Override
