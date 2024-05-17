@@ -2,19 +2,14 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
 <tiles-definitions>
-	<definition name = "schedule/list" extends = "mainTemplate" > 
-		<put-attribute name="top" value = "/WEB-INF/schedule/scheduleTop.jsp"/>
-		<put-attribute name="menu" value = "/WEB-INF/menu/insa_menu.jsp"/>
-		<put-attribute name="content" value = "/WEB-INF/schedule/schedulelist.jsp"/>
+	<definition name="schedule/insert" extends="mainTemplate">	
+		<put-attribute name="menu" value="/WEB-INF/menu/pub_menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/schedule/addSchedule.jsp"/>
 	</definition>
-	<definition name = "schedule/insert" extends = "mainTemplate" > 
-		<put-attribute name="top" value = "/WEB-INF/schedule/scheduleTop.jsp"/>
-		<put-attribute name="menu" value = "/WEB-INF/menu/pub_menu.jsp"/>
-		<put-attribute name="content" value = "/WEB-INF/schedule/addSchedule.jsp"/>
+	<definition name="schedule/list" extends="mainTemplate">	
+		<put-attribute name="menu" value="/WEB-INF/menu/pub_menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/schedule/schedulelist.jsp"/>
 	</definition>
-
 </tiles-definitions>
-       
-       
-       

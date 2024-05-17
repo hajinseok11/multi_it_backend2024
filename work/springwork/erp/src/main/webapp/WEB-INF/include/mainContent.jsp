@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,21 @@
 
 </style>
 <title>Insert title here</title>
+<script type = "text/javascript">
+	$(document).ready(function(){
+		// id가 boardCategory인 엘리먼트의 하위 엘리먼트인 li태그에 동일한 코드를 적용
+		$("#boardCategory>li").each(function(){
+			// li가 클릭될 대 마다 alert를 실행 - 현재 선택한 객체를 지칭
+			$(this).click(function(){
+				// 선택한 li의 텍스트를 가져오기
+				let category = $(this).text();
+				// alert("선택"+category);
+				// 클릭한 li탭이 선택되도록 class 속성을 active로 정의
+				$(this).attr("class","active");
+			})
+		})
+	}); // end ready
+</script>
 </head>
 <body>
 	<div class="container">
@@ -76,29 +92,21 @@
 					<div class="panel-footer">사내소식</div>
 					<div class="panel-body">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#">최근게시판</a></li>
+							<li class="active"><a href="#">최근게시판</a></li> <!--class "active" = 선택되어있는 상태  -->
 							<li><a href="#">업무공지</a></li>
 							<li><a href="#">경조사</a></li>
 						</ul>
 						<div id="boardMain" style="padding-top: 20px; padding-left: 10px">
 							<table>
-								<tr>
-									<td class="boardContent" style="">mini프로젝트 개최</td>
-									<td class="boardDate" style="">2023.5.30</td>
-								</tr>
-								<tr>
-									<td class="boardContent" style="">kimsaemERP ver2.0출시</td>
-									<td class="boardDate" style="">2023.5.29</td>
-								</tr>
-								<tr class="boardRow">
-									<td class="boardContent">사옥 이전날짜 확정</td>
-									<td class="boardDate">2023.06.11</td>
-								</tr>
-								<tr class="boardRow">
-									<td class="boardContent">보안의 날 참석 인원 확정</td>
-									<td class="boardDate">2023.6.11</td>
-								</tr>
-							
+								<c:forEach var = "board" items="${board.list}">
+									<tr>
+										<td class = "boardContent" style="">
+										<a href = "/erp/board/read?board_no"=${board.board_no}&action=READ">${board.title}</a>
+										</td>
+										<td class = "boardDate" style = ""> ${board.write_date}
+										</td>
+									</tr>
+								</c:forEach>
 							</table>
 						</div>
 					</div>

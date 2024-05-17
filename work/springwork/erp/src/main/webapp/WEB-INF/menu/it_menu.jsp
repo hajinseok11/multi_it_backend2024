@@ -16,7 +16,7 @@
 		<a href="#" class="list-group-item">개발이슈조회</a>
 		<a href = "/erp/json/showpage" class = "list-group-item">JSON테스트</a>
 		<a href = "/erp/ajax/showpage" class = "list-group-item">Ajax테스트</a>
-		<a href = "/erp/ajaxexam/showpage" class = "list-group-item">Ajax연습하기</a>
+		<a href = "/erp/ajax/exam" class = "list-group-item">Ajax연습하기</a>
 	</div>
 </body>
 </html>
