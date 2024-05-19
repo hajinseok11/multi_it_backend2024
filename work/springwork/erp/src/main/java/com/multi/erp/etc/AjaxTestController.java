@@ -26,9 +26,9 @@ public class AjaxTestController {
 	public String noajax(String id, Model model) {
 		String msg="";
 		if(id.equals("jang")) {
-			msg = "사용가능 아이디";
-		}else {
 			msg = "사용불가능 아이디";
+		}else {
+			msg = "사용가능 아이디";
 		}
 		model.addAttribute("msg",msg);
 		return "etcview/ajax"; // forward방식
@@ -65,7 +65,7 @@ public class AjaxTestController {
 		return "etcview/ajaxexam";
 	}
 	
-	@GetMapping("/getBoardJson")
+	@GetMapping(value = "/getBoardJson")
 	@ResponseBody
 	public BoardDTO getBoardJson(String boardno) {
 		// @ResponseBody로 정의한 후
@@ -77,6 +77,8 @@ public class AjaxTestController {
 	public List<BoardDTO> getBoardJsonArr() {
 		return service.boardList();
 	}
+	
+
 }
 
 

@@ -26,32 +26,36 @@
 				},
 				error:error_run
 			}) // end ajax
-		})
-		
-		$("#testjsonbtn").on("click",function(){
-			let querydata = {"boardno":$("#boardno").val()};	
-			$.ajax({
-				url:"/erp/ajax/exam02",
-				type:"get",
-				data:querydata,
-				dataType:"json",
-				success:function(result){
-					alert(result.length"========"+result[0].title)
-				},
-				error:error_run
+			})// end testbtn
+			
+			$("#testjsonbtn").on("click",function(){
+				let querydata = {"boardno":$("#boardno").val()};	
+				$.ajax({
+					url:"/erp/ajax/exam02",
+					type:"get",
+					dataType:"json",
+					success:function(result){
+						// alert(result.length"========"+result[0].title)
+						// JSONArray객체는 자바스크립트에서 배열처럼 처리
+						// let myarr = [10,20,30]
+						// json array데이터를 꺼내서 출력할 수 있도록 저장할 수 있는 변수
+						let printadata = "";
+						/* for(const value of myarr){
+							printadata = printadata +value.board_no+","+value.title
+						} */
+						result.filter(value=>value.board_no<=50)
+							  .forEach(value => {
+							    printdata = printdata +value.board_no+","+value.title+"===> 함수 여러개를 쓸 수 있다.<br/>"
+						})
+					$("#printarr").html(printdata)
+					},
+					error:error_run
+				})//end ajax
 			})
-		})	
-		error:function(obj,msg,statusMsg){
+		})// end ready
+		function error_run(obj,msg,statusMsg){
 			alert("요청실패=>"+obj+","+msg+","+statusMsg);
-			// JSONArray객체는 자바스크립트에서 배열처럼 처리
-			let myarr = [10,20,30]
-			for(const value of myarr){
-				alert(value);
-			}
 		}
-		
-		
-	}
 	</script>
 	<form>
 		글번호:<input type="text" name="boardno" id="boardno"/>

@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	
 		$(document).ready(function(){
 			//alert("test");
 			$("#noajaxbtn").on("click",function(){
@@ -29,23 +28,8 @@
 					error:error_run
 				})
 			})
-		}); // end ready
-		// ajax요청이 성공하면 success_run이 자동으로 호출되면서 서버가 실행결과를 success_run의 매개변수로 전달한다.
-		function success_run(result){
-			alert("요청성공"+result);
-			$("#result2").html("<h2>jquery:"+result+"</h2>");
-		}
-		// ajax요청이 실패하면 success_run이 자동으로 호출
-		// 요청실패를 하는 경우에도 error_run을 호출하면서 여러가지 값들을 전송
-		// obj-XMLHttpRequest객체
-		// msg-응답메시지
-		// statusMsg - 에러메시지
-		function error_run(obj,msg,statusMsg){
-			alert("요청실패=>"+obj+","+msg+","+statusMsg);
-		}
-		
-		
-		$("#guguajaxbtn").on("click",function(){
+			
+			$("#guguajaxbtn").on("click",function(){
 			let querydata = {"dan":$("#dan").val()};
 			$.ajax({
 				url:"/erp/ajax/gugu",
@@ -58,12 +42,24 @@
 					alert("요청실패=>"+obj+","+msg+","+statusMsg);
 				}// end error
 			}) // end ajax
+			
 		});// end #guguajaxbtn click
-
 		
-		
-	</script>
-</head>
+	}); // end ready
+	// ajax요청이 실패하면 success_run이 자동으로 호출되면서 서버가 실행결과를 success_run의 매개변수로 전달한다.
+		function success_run(result){
+			alert("요청성공"+result);
+			$("#result2").html("<h2>jquery:"+result+"</h2>");
+		}
+		// 요청실패를 하는 경우에도 error_run을 호출하면서 여러가지 값들을 전송
+		// obj-XMLHttpRequest객체
+		// msg-응답메시지
+		// statusMsg - 에러메시지
+		function error_run(obj,msg,statusMsg){
+			alert("요청실패=>"+obj+","+msg+","+statusMsg);
+		}
+		</script>
+	</head>
 <body>
 	<h3>Ajax 테스트하기</h3>
 	<form name = "myform">
@@ -78,7 +74,7 @@
 	<div id = "result2"></div>
 	<h3>구구단출력하기</h3>
 	<form name="myform">
-		<input type="text" name="id" id="dan"/>
+		<input type="text" name="dan" id="dan"/>
 		<input type="button" id="guguajaxbtn" value="구구단출력">
 	</form>
 	<div id="guguresult"></div>
