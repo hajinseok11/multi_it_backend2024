@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -136,6 +137,18 @@ public class MemberController {
 		service.insert(user);
 		
 		return "member/insert";
+	}
+	@GetMapping(value = "/ajax/idCheck",produces = "application/text;charset=utf-8")
+	public @ResponseBody String idCheck(String id) {
+		String msg = "";
+		boolean check = service.idCheck(id);
+		if(check) {
+			// 기존 DB에 저장되어있는 아이디
+			msg = "사용불가능한 아이디";
+		}else {
+			msg = "사용 가능한 아이디";
+		}
+		return msg;
 	}
 } 
 

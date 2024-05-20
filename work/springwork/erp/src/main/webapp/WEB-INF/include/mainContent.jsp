@@ -44,6 +44,28 @@
 				</td>
 				<td class="boardDate" style="">${board.write_date }</td>
 				</tr> */
+				$.ajax({
+					url:"/erp/board/ajax/list",
+					type:"get",
+					data:{"category":category},
+					success:function(result){
+						// 조회된 레코드 갯수만큼 출력하는 뷰를 만들기
+						// alert(result.length)
+						let printdata = "";
+						result.forEach(value=>{
+							printdata = printdata+"<tr><td class='boardContent' style=''>"+
+							"<a href='/erp/board/read?board_no="+value.board_no+"&action=READ'>"+
+									value.title+"</a></td><td class='boardDate' style=''>"+
+									value.write_date+"</td></tr>"
+						});
+						// alert(printdata);
+						// 만들어진 결과를 테이블에 row로 출력되도록 처리
+						// 데이터가 쌓이지 않도록 기존의 데이터를 지우고 하위 엘리먼트를 추가						
+						$("#myboardlist").empty(); // <tr> 태그를 모두 지우기
+						$("#myboardlist").append(printdata);
+					}// end success
+					
+				})
 			})
 		})
 	}); // end ready

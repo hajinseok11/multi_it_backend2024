@@ -65,6 +65,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public boolean idCheck(String id) {
 		// TODO Auto-generated method stub
+		boolean result = true;
+		MemberDTO user = sessionTemplate.selectOne("com.multi.erp.member.idcheck",id);
+		if (user==null) { // 해당 아이디가 디비에 존재하지 않는 경우
+			result = false;
+		}
 		return false;
 	}
 

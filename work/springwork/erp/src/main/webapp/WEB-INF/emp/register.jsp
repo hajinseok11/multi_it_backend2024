@@ -9,7 +9,18 @@
 <meta charset="UTF-8">
 	<title>Insert title here</title>
 	<script type="text/javascript">
-		
+		$(document).ready(function(){
+			$("#id").on("keyup",function(){
+				$.ajax({
+					url:"/erp/member/ajax/idcheck",
+					type:"get",
+					data:{"id":$("#id").val()},
+					success:function(result){
+						$("#checkVal").text(result);
+					}
+				})
+			}); // end keyup
+		})
 	</script>
  </head>
 	
