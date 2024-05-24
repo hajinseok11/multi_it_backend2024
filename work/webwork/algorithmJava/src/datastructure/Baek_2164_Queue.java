@@ -12,19 +12,17 @@ public class Baek_2164_Queue {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Queue<Integer> queue = new LinkedList<>();
 		int count = Integer.parseInt(br.readLine());
-		// 1부터 n까지 큐에 저장
-		for (int i = 1; i<=count; i++) {
+		//1부터 n까지 큐에 저장
+		for(int i=1;i<=count;i++) {
 			queue.offer(i);
 		}
-		// System.out.println(Arrays.toString(queue.toArray()));
-		while(queue.size()>1) {// 한 장 남을 때 까지 반복작업
+		//System.out.println(Arrays.toString(queue.toArray()));
+		while(queue.size()>1) {//한장 남을때까지 반복작업
 			queue.poll();
 			int data = queue.poll();
-			// System.out.println(data);
 			queue.add(data);
-			// System.out.println(Arrays.toString(queue.toArray()));
+		//	System.out.println(Arrays.toString(queue.toArray()));
 		}
 		System.out.println(queue.peek());
 	}
-
 }
