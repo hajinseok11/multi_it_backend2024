@@ -13,18 +13,17 @@ import java.util.Scanner;
 	1. 테스트케이스 갯수가 정해지지 않은 경우 - EOF를 체크
 	2. BufferedReader를 이용
  */
-public class Baek_10951_BufferedReader {
+public class Baek_10951_BufferedReader_ver2 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		while(true) {
-			String line = br.readLine();
-			if(line==null) {
-				break;
-			}
+		String line="";
+		while((line = br.readLine())!=null) {
 			String[] resultArr = line.split(" ");
-			System.out.println(Integer.parseInt(resultArr[0])+
-					Integer.parseInt(resultArr[1]));
+			run(resultArr);
 		}
 	}
-	
+	public static void run(String[] resultArr) {
+		System.out.println(Integer.parseInt(resultArr[0])+
+				Integer.parseInt(resultArr[1]));
+	}
 }
