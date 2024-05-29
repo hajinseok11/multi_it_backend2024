@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 	  layout:decorate="~{layout/mainlayout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<!--
+			각 항목을 선택하면 각 항목에 대한 상세페이지가 실행될 수 있도록 작업
+			product폴더에 productRead.html로 작업
+			- 요청 path:/layout/prdread
+			- 각 li를 하이퍼링크로 요청하도록 처리
+			- 요청할 때 prdno는 파라미터명(prd001,prd002,prd003,prd004
+			  prdname => 사과, 배, 키위, 귤
+			- 상세페이지 화면에 prdno와 prdname값만 출력하기
+			- ThymeleafLayoutController에 추가하고 작업하기
+			- 상품목록페이지에서 li를 클릭하면 페이지가 넘어가도록 처리
+			- 상세페이지 캡쳐해서 올리기
+			과제로 제출하기
+	  		-->
+		<h2>상품목록페이지(레이아웃 라이브러리 이용)</h2>
+		<ul>
+			<li>사과</li>
+			<li>배</li>
+			<li>키위</li>
+			<li>귤</li>
+		</ul>
+	</div>
+</body>
+</html>
