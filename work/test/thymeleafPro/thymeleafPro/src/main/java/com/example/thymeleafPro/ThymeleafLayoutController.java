@@ -1,6 +1,7 @@
 package com.example.thymeleafPro;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,12 +19,13 @@ public class ThymeleafLayoutController {
 	}
 	@GetMapping("/prdlist")
 	public String prdlist() {
-		// return "layout/prdlistLayout";	1차 작업 - 타임리프프레그먼트를 이용해서 작업
 		return "product/prdlist";
 	}
 	@GetMapping("/prdread")
-	public String prdread() {
-		// return "layout/prdlistLayout";	1차 작업 - 타임리프프레그먼트를 이용해서 작업
-		return "product/";
+	public String prdread(String prdno, String prdname, Model model) {
+		System.out.println(prdname+":"+prdno);
+		model.addAttribute("prdname",prdname);
+		model.addAttribute("prdno",prdno);
+		return "product/productRead";
 	}
 }

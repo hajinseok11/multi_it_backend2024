@@ -12,7 +12,7 @@
 		$(document).ready(function(){
 			$("#id").on("keyup",function(){
 				$.ajax({
-					url:"/erp/member/ajax/idcheck",
+					url:"/erp/member/ajax/idCheck",
 					type:"get",
 					data:{"id":$("#id").val()},
 					success:function(result){
