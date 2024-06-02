@@ -26,7 +26,7 @@
 	<div th:fragment="top">
 	<div style="height:90px;padding:10px">
 		<div id="toparea"  class="navbar navbar-inverse">
-			<a th:href="#" style="position:absolute;top:30px;font-size: 18pt; font-weight: bolder;text-decoration: none;padding-left: 10px">KimSaemERP</a>
+			<a href="#" style="position:absolute;top:30px;font-size: 18pt; font-weight: bolder;text-decoration: none;padding-left: 10px">KimSaemERP</a>
 				<!-- 세션에 user라는 이름으로 공유된 객체가 없는 경우 출력될 부분 -->
 				<ul class="nav navbar-nav navbar-right" 
 			 			style="position:relative ;top:20px" th:if="${session.user==null}">
@@ -44,7 +44,7 @@
 						<li><a th:href="@{/erp/member/spring/logout}"><span class="glyphicon glyphicon-log-out"></span>
 								Logout</a></li>
 					</ul>
-					<span  class="navbar-form pull-right" th:if="${session.user!=null}">
+					<span  class="navbar-form pull-right" th:unless="${session.user==null}">
 						<img  class="img-circle" style="width: 60px;height: 70px"
 							  		th:src="@{/images/}+${session.user.profile_photo}"/>
 					</span>
@@ -63,13 +63,13 @@
 	<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a th:href="/erp/index.do">Home</a></li>
-					<li><a th:href="@{/erp/menu/insa.do}">업무관리</a></li>
-					<li><a th:href="#">자원관리</a></li>
-					<li><a th:href="@{/erp/board/list?category=all}">커뮤니티</a></li>
-					<li><a th:href="#">일정관리</a></li>
-					<li><a th:href="#">휴가관리</a></li>
-					<li><a th:href="#">결재</a></li>
+					<li class="active"><a href="/erp/index.do">Home</a></li>
+					<li><a href="@{/erp/menu/insa.do}">업무관리</a></li>
+					<li><a href="#">자원관리</a></li>
+					<li><a href="@{/erp/board/list?category=all}">커뮤니티</a></li>
+					<li><a href="#">일정관리</a></li>
+					<li><a href="#">휴가관리</a></li>
+					<li><a href="#">결재</a></li>
 				</ul>
 
 			</div>
