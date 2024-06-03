@@ -31,7 +31,12 @@
 </script>
 </head>
 <body>
-	
+<div>
+	<!-- 이곳에 top화면을 연결하세요" -->
+	<th:block th:replace="include/top :: top">
+
+	</th:block>
+</div>
 	
 	<div style="padding-top: 30px" layout:fragment="content">
 		<div class="col-md-3" style="padding-bottom: 10px">

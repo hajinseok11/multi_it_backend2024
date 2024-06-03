@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div>
+        <!-- 이곳에 top화면을 연결하세요" -->
+        <th:block th:replace="include/top :: top">
+        </th:block>
+
+    </div>
+    <div style="background-color: #edeef1;padding: 20px;height: 800px" id="main">
+        <!-- 이곳에 mainContent화면을 연결하세요" -->
+        <th:block th:replace="include/mainContent :: mainContent">
+        </th:block>
+    </div>
+
+
+
+</body>
+</html>
