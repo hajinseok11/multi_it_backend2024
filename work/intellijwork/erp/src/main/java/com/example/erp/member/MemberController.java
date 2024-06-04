@@ -122,8 +122,8 @@ public class MemberController {
 		System.out.println(user);
 		//1. 파일업로드
 		MultipartFile file = user.getUserImage();
-		String path = WebUtils.getRealPath(session.getServletContext(),"/WEB-INF/upload");
-		String storeFilename =  fileuploadservice.uploadFile(file, path);
+		// String path = WebUtils.getRealPath(session.getServletContext(),"/WEB-INF/upload");
+		String storeFilename =  fileuploadservice.uploadFile(file);
 		user.setProfile_photo(storeFilename);
 		user.setGender("0");
 		System.out.println(user);

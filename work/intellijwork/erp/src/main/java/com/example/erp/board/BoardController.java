@@ -49,8 +49,9 @@ public class BoardController {
 	
 	@GetMapping("/write")
 	public String writePage() {
-		return "board/writepage";//view이름
+		return "board/board_write"; //view이름
 	}
+
 	//게시글등록을 위해 사용자가 입력한 내용과 첨부한 파일이 업로드되도록 처리
 	@PostMapping("/write")
 	public String insert(BoardDTO board,HttpSession session)
@@ -64,12 +65,12 @@ public class BoardController {
 		//   - ServletContext객체는 프로젝트(context)에 대한 정보를 담고 있는 객체이고 이 안에 실제 경로를 
 		//     구할 수 있는 기능이 있음
 		//   - ServletContext는 세션객체를 통해 생성
-		String path = WebUtils.getRealPath(session.getServletContext(),"/WEB-INF/upload");
+		// String path = WebUtils.getRealPath(session.getServletContext(),"/WEB-INF/upload");
 		
-		System.out.println("^^^^^^^^^"+path);
+		// System.out.println("^^^^^^^^^"+path);
 		
 		//3. 업로드로직을 처리하는 서비스의 메소드를 호출
-		List<BoardFileDTO> boardfiledtolist =  fileuploadService.uploadFiles(file, path);
+		List<BoardFileDTO> boardfiledtolist =  fileuploadService.uploadFiles(file);
 		System.out.println(boardfiledtolist);
 		service.insert(board,boardfiledtolist);
 		return "redirect:/board/list?category=all";
@@ -138,8 +139,7 @@ public class BoardController {
 		//ServletContext내부의 메소드를 사용해서 realpath를 가져오기 위해서
 		//file:은 가져올 자원이 파일시스템에 존재한다는 것을 명시
 		UrlResource resource = 
-			new UrlResource("file:"+WebUtils.getRealPath(session.getServletContext(), 
-							"/WEB-INF/upload/"+selectfileinfo.getStoreFilename()));
+			new UrlResource("file:"+fileuploadService.getUploadpath(selectfileinfo.getStoreFilename()));
 		//3. 파일명(다운로드되는 파일명)에 한글이 있는 경우 오류가 발생되지 않도록 하기 위해서 처리 
 		String encodedFilename = UriUtils.encode(selectfileinfo.getOriginalFilename(), "UTF-8");
 		//4. 파일을 다운로드형식으로 응답하기 위해서 응답정보를 수정 - 응답헤더에 값을 추가(파일다운로드로 인식시키기 위해서)
