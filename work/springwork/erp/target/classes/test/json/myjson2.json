@@ -1,0 +1,23 @@
+{
+	"historylist": [
+		{
+			"month": "3",
+			"subject": "java"
+		},
+		{
+			"month": "3",
+			"subject": "servlet"
+		}
+	],
+	"name": "하진석",
+	"subjectlist": [
+		"자바",
+		"하둡",
+		"시큐어코딩"
+	],
+	"addr": {
+		"zip": "111-222",
+		"addr1": "인천시"
+	},
+	"age": "28"
+}
