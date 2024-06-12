@@ -90,7 +90,8 @@ public class BoardController {
 	}
 	//Model타입의 변수를 매개변수에 정의하면 스프링MVC내부에서 데이터를 담을 수 있는 모델객체를 만들어서 넘겨준다.
 	@GetMapping("/read")
-	public String read(@RequestParam("board_no") String board_no,@RequestParam("action") String action,Model model) {
+	public String read(@RequestParam("board_no") String board_no,
+					   @RequestParam("action") String action, Model model) {
 		BoardDTO board =  service.getBoardInfo(board_no);
 		List<BoardFileDTO> boardfiledtolist = service.getFileList(board_no);
 		System.out.println("**************************"+board);
@@ -98,7 +99,7 @@ public class BoardController {
 		if(action.equals("READ")) {
 			view = "board/board_read";
 		}else {
-			view = "board/update";
+			view = "board/board_update";
 		}
 		//스프링이 만들어준 모델객체에 공유할 데이터를 공유한다.
 		model.addAttribute("board", board);
